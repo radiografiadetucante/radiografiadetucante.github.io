@@ -185,7 +185,33 @@
 
   .hero h1 .cante { font-style: italic; font-weight: 500; color: var(--gold); }
 
+  .eyebrow a { text-decoration: none; border-bottom: 1px solid rgba(196,154,44,0.35); padding-bottom: 3px; }
+  .eyebrow a:hover { color: var(--gold-2); }
+
   @media (max-width: 480px) { .eyebrow { letter-spacing: 3px; font-size: 10px; } }
+
+  .endorse { margin-bottom: 24px; }
+
+  .endorse a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 7px 16px 7px 14px;
+    border: 1px solid var(--line-dark);
+    border-radius: 999px;
+    background: rgba(196,154,44,0.06);
+    transition: border-color 0.2s ease;
+  }
+
+  .endorse a:hover { border-color: var(--gold); }
+  .endorse span { font-size: 13px; color: var(--stone); }
+  .endorse img { height: 26px; width: auto; border-radius: 4px; }
+  .endorse strong { font-size: 14px; font-weight: 600; color: var(--parchment); }
+
+  .foot-endorse { margin-top: 8px; }
+  .foot-endorse a { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; }
+  .foot-endorse img { height: 20px; width: auto; border-radius: 3px; }
 
   .rule {
     width: 48px;
@@ -332,7 +358,24 @@
     font-family: var(--sans);
   }
 
-  a.video-play { text-decoration: none; }
+  a.video-play {
+    text-decoration: none;
+    justify-content: flex-end;
+    padding-bottom: 28px;
+    background:
+      linear-gradient(to top, rgba(13,10,6,0.85) 0%, rgba(13,10,6,0.15) 45%, rgba(13,10,6,0.25) 100%),
+      url('https://i.ytimg.com/vi/D63Z0Z4BJNY/hqdefault.jpg') center / cover no-repeat,
+      var(--ink-2);
+  }
+
+  a.video-play .disc {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  }
+
+  a.video-play:hover .disc { transform: translate(-50%, -50%) scale(1.06); }
 
   .video-alt { text-align: center; font-size: 13px; color: var(--stone); margin-top: 12px; }
   .video-alt a { color: var(--gold-2); }
@@ -731,7 +774,7 @@
 <!-- NAVEGACIÓN -->
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a href="#" class="brand"><img src="logo.png" alt="" onerror="this.style.display='none'"><span>Radiografía de tu Cante</span></a>
+    <a href="#" class="brand"><img src="logo.png" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}"><span>Radiografía de tu Cante</span></a>
     <a href="#reservar" class="btn btn-gold">Solicitar sesión</a>
   </div>
 </header>
@@ -739,8 +782,14 @@
 <!-- PORTADA -->
 <section class="hero">
   <div class="wrap">
-    <img class="hero-logo in d1" src="logo.png" alt="Radiografía de tu Cante" onerror="this.style.display='none'">
-    <p class="eyebrow in d2">Servicio exclusivo · Judicatura</p>
+    <img class="hero-logo in d1" src="logo.png" alt="Radiografía de tu Cante" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}">
+    <p class="endorse in d2">
+      <a href="https://www.juecesyfiscales.es" target="_blank" rel="noopener">
+        <span>Un servicio de</span>
+        <img src="logo-jyf.png" alt="" onerror="this.style.display='none'">
+        <strong>Jueces y Fiscales</strong>
+      </a>
+    </p>
     <h1 class="in d3">Radiografía<br>de tu <span class="cante">Cante</span></h1>
     <div class="rule in d4"></div>
     <p class="question in d4">¿Sabes realmente cómo suenas ante un tribunal?</p>
@@ -775,7 +824,7 @@
       <a href="https://www.youtube.com/watch?v=D63Z0Z4BJNY" target="_blank" rel="noopener" class="video-play" id="videoPlay" aria-label="Reproducir el testimonio">
         <span class="disc"></span>
         <span class="t">Cristina nos cuenta su experiencia</span>
-        <span class="s">27 segundos. El vídeo se carga desde YouTube al reproducirlo.</span>
+        <span class="s">27 segundos</span>
       </a>
     </div>
     <p class="video-alt">¿No se reproduce? <a href="https://www.youtube.com/watch?v=D63Z0Z4BJNY" target="_blank" rel="noopener">Ver el vídeo en YouTube</a></p>
@@ -977,7 +1026,8 @@
 <footer>
   <div class="wrap foot">
     <div>
-      <a href="#" class="brand" style="font-size:18px"><img src="logo.png" alt="" onerror="this.style.display='none'">Radiografía de tu Cante</a>
+      <a href="#" class="brand" style="font-size:18px"><img src="logo.png" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}">Radiografía de tu Cante</a>
+      <p class="foot-endorse">Un servicio de <a href="https://www.juecesyfiscales.es" target="_blank" rel="noopener"><img src="logo-jyf.png" alt="" onerror="this.style.display='none'">Jueces y Fiscales</a></p>
       <p style="margin-top:10px"><a href="tel:+34640863719">640 863 719</a> · <a href="mailto:radiografiadetucante@gmail.com">radiografiadetucante@gmail.com</a></p>
     </div>
     <div class="foot-links">

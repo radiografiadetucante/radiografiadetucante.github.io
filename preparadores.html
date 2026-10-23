@@ -386,8 +386,8 @@
 
 <header class="head">
   <a href="index.html" class="back">← Volver a la web</a><br>
-  <img src="logo.png" alt="Radiografía de tu Cante" onerror="this.style.display='none'">
-  <span class="eyebrow">Red de preparadores</span>
+  <img src="logo.png" alt="Radiografía de tu Cante" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}">
+  <span class="eyebrow">Un servicio de <a href="https://www.juecesyfiscales.es" target="_blank" rel="noopener" style="color:inherit;display:inline-flex;align-items:center;gap:6px;vertical-align:middle"><img src="logo-jyf.png" alt="" onerror="this.style.display='none'" style="height:20px;width:auto;margin:0;filter:none;border-radius:3px">Jueces y Fiscales</a></span>
   <h1>Únete como<br><em>preparador</em></h1>
   <p>Escucha a opositores que no te conocen y ayúdales a llegar mejor al examen. Rellena en unos segundos este formulario y te avisaremos cuando haya un opositor para ti.</p>
   <p style="margin-top:12px">Te enviaremos cada cita con la fecha y el enlace de la videollamada. Un clic y estás dentro, sin instalar nada.</p>
@@ -401,7 +401,7 @@
 
       <!-- 1. DATOS -->
       <div class="block">
-        <h2 class="block-title"><span>01</span>Tus datos</h2>
+        <h2 class="block-title">Tus datos</h2>
         <div class="form-group">
           <label class="field" for="nombre">Nombre y apellidos</label>
           <input type="text" id="nombre" name="nombre" required>
@@ -433,7 +433,7 @@
 
       <!-- 2. EXPERIENCIA -->
       <div class="block">
-        <h2 class="block-title"><span>02</span>Experiencia</h2>
+        <h2 class="block-title">Experiencia</h2>
         <p class="q">¿Tienes experiencia preparando opositores?</p>
         <div class="chips">
           <input type="radio" id="exp-si" name="experiencia" value="Sí" required><label for="exp-si">Sí</label>
@@ -447,7 +447,7 @@
 
       <!-- 3. MATERIAS -->
       <div class="block">
-        <h2 class="block-title"><span>03</span>Materias</h2>
+        <h2 class="block-title">Materias</h2>
         <p class="q">¿De qué materias quieres tomar temas? Puedes marcar varias.</p>
         <div class="chips" id="materias">
           <input type="checkbox" id="mat-all"><label for="mat-all" class="all">Marcar todas</label>
@@ -464,7 +464,7 @@
 
       <!-- 4. DISPONIBILIDAD -->
       <div class="block">
-        <h2 class="block-title"><span>04</span>Disponibilidad habitual</h2>
+        <h2 class="block-title">Disponibilidad habitual</h2>
         <p class="q">Marca las horas a las que sueles poder empezar una sesión. Es orientativo: siempre te consultaremos antes de cerrar una cita.</p>
         <div class="grid-wrap">
           <table class="avail" id="availTable">
@@ -490,7 +490,7 @@
 
       <!-- 5. COBRO -->
       <div class="block">
-        <h2 class="block-title"><span>05</span>Cobro de las sesiones</h2>
+        <h2 class="block-title">Cobro de las sesiones</h2>
         <p class="q">¿Cómo quieres que te paguen los opositores?</p>
         <div class="chips">
           <input type="radio" id="pago-bizum" name="forma_pago" value="Bizum" required><label for="pago-bizum">Bizum</label>
@@ -518,7 +518,7 @@
 
       <!-- 6. CONSENTIMIENTO -->
       <div class="block">
-        <h2 class="block-title"><span>06</span>Aceptación</h2>
+        <h2 class="block-title">Aceptación</h2>
         <input type="hidden" name="version_condiciones" value="Condiciones para preparadores v1 (octubre 2026)">
         <input type="hidden" name="fecha_aceptacion" id="fechaAceptacion" value="">
 
@@ -533,10 +533,6 @@
         <div class="consent">
           <input type="checkbox" id="acepta_datos" name="acepta_proteccion_datos" value="Sí" required>
           <label for="acepta_datos">He leído la <a href="condiciones-preparadores.html#privacidad" target="_blank">información sobre protección de datos</a> y quedo informado de que, al confirmarse cada cita, mi nombre, provincia, carrera, email y datos de cobro se comunicarán al opositor asignado. <em class="req">(Obligatorio)</em></label>
-        </div>
-        <div class="consent">
-          <input type="checkbox" id="acepta_info" name="acepta_comunicaciones" value="Sí">
-          <label for="acepta_info">Quiero recibir por email novedades sobre la Plataforma. <em class="req">(Opcional)</em></label>
         </div>
 
         <button type="submit" class="submit-btn" id="submitBtn">Enviar mi solicitud →</button>
@@ -553,6 +549,7 @@
 </main>
 
 <footer>
+  <a href="https://www.juecesyfiscales.es" target="_blank" rel="noopener">Un servicio de Jueces y Fiscales</a> ·
   <a href="mailto:radiografiadetucante@gmail.com">radiografiadetucante@gmail.com</a> ·
   <a href="condiciones-preparadores.html">Condiciones para preparadores</a>
 </footer>
