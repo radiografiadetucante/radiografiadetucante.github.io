@@ -3,224 +3,267 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Condiciones del servicio y Política de privacidad | Radiografía de tu Cante</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Condiciones y privacidad | Radiografía de tu Cante</title>
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="theme-color" content="#0d0a06">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #0e0b07;
-    --gold: #b8922a;
-    --cream: #faf6ef;
-    --parchment: #f7f2ea;
-    --stone: #6a5f55;
+    --ink: #0d0a06;
+    --gold: #c49a2c;
+    --gold-2: #e2bf62;
+    --paper: #fbf8f2;
+    --text: #2b2419;
+    --stone: #8a7d6c;
+    --line: rgba(43,36,25,0.12);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--cream); color: var(--ink); font-family: 'Inter', sans-serif; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--text);
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    line-height: 1.75;
+  }
 
   header {
-    background: var(--ink);
-    padding: 24px;
+    background: radial-gradient(ellipse 70% 80% at 50% 0%, #2b200d, transparent 70%), var(--ink);
+    color: #f5efe4;
     text-align: center;
-    border-bottom: 1px solid rgba(184,146,42,0.2);
+    padding: 40px 24px 46px;
   }
 
-  .header-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    color: var(--gold);
+  header a.back {
+    font-size: 13px;
+    color: var(--gold-2);
     text-decoration: none;
-    letter-spacing: 1px;
   }
 
-  .content {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 64px 24px;
+  header img {
+    display: block;
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin: 22px auto 14px;
   }
 
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 40px;
+  header h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(30px, 5vw, 42px);
     font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 8px;
     line-height: 1.1;
   }
 
-  .updated {
-    font-size: 12px;
-    color: var(--stone);
-    letter-spacing: 1px;
-    margin-bottom: 48px;
-    display: block;
+  header p { font-size: 13px; color: #9b8f80; margin-top: 8px; }
+
+  nav.toc {
+    max-width: 760px;
+    margin: 32px auto 0;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  nav.toc a {
+    font-size: 13px;
+    color: var(--text);
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 999px;
+    padding: 6px 14px;
+    text-decoration: none;
+  }
+
+  nav.toc a:hover { border-color: var(--gold); }
+
+  main { max-width: 760px; margin: 0 auto; padding: 24px 20px 72px; }
+
+  section {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 30px 28px;
+    margin-top: 20px;
+    scroll-margin-top: 16px;
   }
 
   h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 28px;
     font-weight: 600;
     color: var(--ink);
-    margin: 48px 0 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid rgba(184,146,42,0.2);
-  }
-
-  h3 {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--ink);
-    margin: 24px 0 8px;
-  }
-
-  p {
-    font-size: 14px;
-    line-height: 1.9;
-    color: #3a2f25;
-    margin-bottom: 16px;
-  }
-
-  ul {
-    font-size: 14px;
-    line-height: 1.9;
-    color: #3a2f25;
-    margin-bottom: 16px;
-    padding-left: 24px;
-  }
-
-  ul li { margin-bottom: 6px; }
-
-  .highlight {
-    background: rgba(184,146,42,0.08);
+    line-height: 1.15;
+    margin-bottom: 14px;
+    padding-left: 14px;
     border-left: 3px solid var(--gold);
-    padding: 16px 20px;
-    margin: 24px 0;
-    font-size: 14px;
-    line-height: 1.8;
-    color: #3a2f25;
   }
 
-  .back-link {
-    display: inline-block;
-    color: var(--gold);
-    text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 1px;
-    margin-bottom: 40px;
+  h3 { font-size: 15px; font-weight: 600; color: var(--ink); margin: 22px 0 6px; }
+
+  p, li { font-size: 14.5px; }
+  p + p { margin-top: 10px; }
+  ul, ol { padding-left: 22px; margin-top: 8px; }
+  li { margin-bottom: 6px; }
+
+  .box {
+    background: rgba(196,154,44,0.07);
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 14.5px;
   }
 
-  .back-link:hover { text-decoration: underline; }
+  a { color: #8a6a14; }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+  th { width: 32%; font-weight: 600; color: var(--ink); }
+
+  @media (max-width: 560px) {
+    section { padding: 24px 20px; }
+    th, td { display: block; width: 100%; padding: 6px 0; border: 0; }
+    tr { display: block; border-bottom: 1px solid var(--line); padding: 8px 0; }
+  }
 
   footer {
     background: var(--ink);
-    padding: 32px 24px;
+    color: #9b8f80;
     text-align: center;
-    border-top: 1px solid rgba(184,146,42,0.1);
+    font-size: 13px;
+    padding: 28px 20px;
   }
 
-  .footer-links { font-size: 12px; color: #6a5f55; }
-  .footer-links a { color: var(--gold); text-decoration: none; opacity: 0.7; margin: 0 8px; }
+  footer a { color: var(--gold-2); text-decoration: none; margin: 0 8px; }
 </style>
 </head>
 <body>
 
 <header>
-  <a href="index.html" class="header-logo">Radiografía de tu Cante</a>
+  <a href="index.html" class="back">← Volver a la web</a>
+  <img src="sello.png" alt="Radiografía de tu Cante" onerror="this.style.display='none'">
+  <h1>Condiciones del servicio<br>y política de privacidad</h1>
+  <p>Última actualización: octubre de 2026</p>
 </header>
 
-<div class="content">
-  <a href="index.html" class="back-link">← Volver a la web</a>
+<nav class="toc">
+  <a href="#aviso">1. Aviso legal</a>
+  <a href="#servicio">2. El servicio</a>
+  <a href="#privacidad">3. Privacidad</a>
+  <a href="#propiedad">4. Propiedad intelectual</a>
+  <a href="#ley">5. Legislación</a>
+</nav>
 
-  <h1>Condiciones del servicio<br>y Política de privacidad</h1>
-  <span class="updated">Última actualización: junio de 2026</span>
+<main>
 
-  <!-- AVISO LEGAL -->
-  <h2>1. Aviso legal e identificación del titular</h2>
-  <p>En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se informa que el titular de la presente web es:</p>
-  <div class="highlight">
-    <strong>Titular:</strong> María Gaisse López<br>
-    <strong>NIF:</strong> 51105070J<br>
-    <strong>Domicilio:</strong> Avda. de Brasil, 29, 1º, 28020, Madrid<br>
-    <strong>Email:</strong> radiografiadetucante@gmail.com<br>
-    <strong>Teléfono:</strong> 640 863 719
-  </div>
+  <!-- 1 -->
+  <section id="aviso">
+    <h2>1. Aviso legal e identificación del titular</h2>
+    <p>En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se informa de que el titular de esta web, Radiografía de tu Cante, un servicio de Jueces y Fiscales, es:</p>
+    <div class="box">
+      <strong>Titular:</strong> María Gaisse López<br>
+      <strong>NIF:</strong> 51105070J<br>
+      <strong>Domicilio:</strong> Avda. de Brasil, 29, 1º, 28020 Madrid<br>
+      <strong>Email:</strong> <a href="mailto:radiografiadetucante@gmail.com">radiografiadetucante@gmail.com</a><br>
+      <strong>Teléfono:</strong> 640 863 719
+    </div>
+  </section>
 
-  <!-- DESCRIPCIÓN DEL SERVICIO -->
-  <h2>2. Descripción del servicio y condiciones de contratación</h2>
+  <!-- 2 -->
+  <section id="servicio">
+    <h2>2. El servicio y sus condiciones</h2>
 
-  <h3>2.1 ¿En qué consiste el servicio?</h3>
-  <p>Radiografía de tu Cante es un servicio de evaluación oral para opositores a judicatura. Consiste en una sesión de 30 minutos por videollamada con un preparador experto, que escucha al opositor cantar un tema y le ofrece feedback inmediato, honesto y personalizado.</p>
+    <h3>2.1 En qué consiste</h3>
+    <p>Radiografía de tu Cante pone en contacto a opositores a judicatura con preparadores ajenos a su preparación habitual, para que realicen una sesión de evaluación oral de 30 minutos por videollamada: el opositor canta un tema y el preparador le ofrece una valoración inmediata y personalizada.</p>
 
-  <h3>2.2 Precio</h3>
-  <p>El precio del servicio es de <strong>49€ por sesión</strong>, IVA incluido. El pago se realizará antes de la celebración de la sesión, según las instrucciones que nuestro equipo le comunicará al confirmar la reserva.</p>
+    <h3>2.2 Quién presta la sesión</h3>
+    <div class="box">
+      Radiografía de tu Cante actúa como <strong>servicio de puesta en contacto</strong>, que es gratuito para el opositor. <strong>La sesión la presta y la cobra el preparador</strong>, que actúa de forma independiente y es el responsable de su contenido y de su correcta realización.
+    </div>
+    <p>Los preparadores se comprometen con Radiografía de tu Cante a respetar el precio publicado, a guardar confidencialidad y a devolver el importe si la sesión no se celebra por causa que les sea imputable.</p>
 
-  <h3>2.3 Proceso de contratación</h3>
-  <ul>
-    <li>El usuario rellena el formulario de solicitud disponible en la web.</li>
-    <li>Nuestro equipo se pone en contacto para proponer un preparador y acordar el horario.</li>
-    <li>Las sesiones se realizan siempre a partir de las 15:00 horas.</li>
-    <li>Tras la confirmación y el pago, se facilita el enlace de videollamada.</li>
-    <li>El contrato se perfecciona en el momento en que el usuario confirma la sesión y realiza el pago.</li>
-  </ul>
+    <h3>2.3 Precio y pago</h3>
+    <ul>
+      <li>El precio de cada sesión es de <strong>49 €</strong>, sin cargos adicionales.</li>
+      <li>El opositor paga <strong>directamente al preparador</strong>, por Bizum o transferencia bancaria según indique este, <strong>antes de la sesión</strong>. Los datos para el pago se facilitan al confirmar la cita.</li>
+      <li>La Radiografía mensual tiene un precio especial, que se comunica a quien lo solicite antes de contratarla.</li>
+    </ul>
 
-  <h3>2.4 Derecho de desistimiento</h3>
-  <p>De conformidad con el Real Decreto Legislativo 1/2007, de 16 de noviembre, por el que se aprueba el texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios, el usuario tiene derecho a desistir del contrato en un plazo de <strong>14 días naturales</strong> desde la confirmación de la reserva, sin necesidad de justificación.</p>
-  <p>Para ejercer el derecho de desistimiento, el usuario debe comunicarlo a través de radiografiadetucante@gmail.com o llamando al 640 863 719, antes de que transcurran los 14 días y siempre que la sesión no se haya celebrado.</p>
-  <p><strong>Excepción:</strong> Si el usuario solicita expresamente que la sesión se celebre antes de que expire el plazo de desistimiento, y la sesión tiene lugar, perderá el derecho de desistimiento.</p>
+    <h3>2.4 Cómo funciona</h3>
+    <ol>
+      <li>El opositor rellena el formulario de solicitud, indicando la materia y el tema o temas que quiere que se le pregunten.</li>
+      <li>Le proponemos un preparador adecuado a su perfil. Si no le encaja, puede pedir otro.</li>
+      <li>El opositor elige horario entre los que le proponemos, con al menos 3 días de margen para que el preparador prepare el tema. Si indica varios temas, el preparador elegirá uno.</li>
+      <li>Una vez confirmada la cita, el opositor realiza el pago al preparador y recibe por email la fecha y el enlace de la videollamada.</li>
+      <li>Se celebra la sesión y el preparador ofrece su valoración al terminar.</li>
+    </ol>
+    <p>La sesión no se grabará salvo consentimiento expreso del opositor.</p>
 
-  <h3>2.5 Cancelaciones y modificaciones</h3>
-  <p>Las cancelaciones realizadas con más de 24 horas de antelación serán reembolsadas íntegramente. Las cancelaciones con menos de 24 horas de antelación no darán derecho a reembolso, salvo causa de fuerza mayor debidamente justificada.</p>
+    <h3>2.5 Cancelaciones</h3>
+    <ul>
+      <li>Si el opositor cancela con <strong>más de 24 horas</strong> de antelación, el preparador le devolverá íntegramente el importe.</li>
+      <li>Si cancela con <strong>menos de 24 horas</strong>, no habrá devolución, salvo causa de fuerza mayor debidamente justificada.</li>
+      <li>Si la sesión no se celebra por causa imputable al preparador, el opositor recibirá la devolución íntegra o, si lo prefiere, una nueva cita con otro preparador.</li>
+    </ul>
+    <p>Para cualquier cancelación o incidencia, el opositor puede escribirnos a <a href="mailto:radiografiadetucante@gmail.com">radiografiadetucante@gmail.com</a>, y colaboraremos para resolverla.</p>
 
-  <!-- POLÍTICA DE PRIVACIDAD -->
-  <h2>3. Política de privacidad y protección de datos</h2>
+    <h3>2.6 Derecho de desistimiento</h3>
+    <p>Cuando el preparador actúe como profesional, el opositor podrá desistir del contrato de la sesión en un plazo de 14 días naturales desde su confirmación, sin necesidad de justificación, conforme al Real Decreto Legislativo 1/2007, de 16 de noviembre. Si el opositor solicita que la sesión se celebre antes de que termine ese plazo y la sesión tiene lugar, perderá el derecho de desistimiento.</p>
 
-  <h3>3.1 Responsable del tratamiento</h3>
-  <div class="highlight">
-    <strong>Responsable:</strong> María Gaisse López<br>
-    <strong>NIF:</strong> 51105070J<br>
-    <strong>Dirección:</strong> Avda. de Brasil, 29, 1º, 28020, Madrid<br>
-    <strong>Email:</strong> radiografiadetucante@gmail.com
-  </div>
+    <h3>2.7 Responsabilidad</h3>
+    <p>Radiografía de tu Cante selecciona a los preparadores y vela por el buen funcionamiento del servicio, pero no responde del contenido de las sesiones ni de los pagos realizados entre opositor y preparador, sin perjuicio de su colaboración para resolver cualquier incidencia.</p>
+  </section>
 
-  <h3>3.2 Datos que recogemos y finalidad</h3>
-  <p>A través del formulario de solicitud, recogemos los siguientes datos personales:</p>
-  <ul>
-    <li><strong>Nombre, teléfono y email:</strong> para identificar al usuario y ponernos en contacto con él.</li>
-    <li><strong>Situación en la oposición y disponibilidad:</strong> para asignar el preparador más adecuado y coordinar la sesión.</li>
-    <li><strong>Información adicional voluntaria:</strong> para personalizar el servicio.</li>
-  </ul>
+  <!-- 3 -->
+  <section id="privacidad">
+    <h2>3. Política de privacidad</h2>
+    <p>Información conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley Orgánica 3/2018 (LOPDGDD).</p>
 
-  <h3>3.3 Base legal del tratamiento</h3>
-  <p>El tratamiento se basa en el consentimiento expreso del usuario, otorgado al marcar la casilla de aceptación del formulario, y en la ejecución del contrato de prestación de servicios.</p>
+    <table>
+      <tr><th>Responsable</th><td>María Gaisse López · NIF 51105070J · Avda. de Brasil, 29, 1º, 28020 Madrid · <a href="mailto:radiografiadetucante@gmail.com">radiografiadetucante@gmail.com</a></td></tr>
+      <tr><th>Datos que tratamos</th><td>
+        Nombre, teléfono y email; momento de la oposición y provincia; materia y temas indicados; preferencias sobre el preparador (carrera, si prefieres mujer u hombre, y si prefieres que sea de otra comunidad autónoma); y la información que nos cuentes voluntariamente.
+      </td></tr>
+      <tr><th>Finalidades</th><td>
+        Gestionar tu solicitud; asignarte un preparador adecuado; coordinar la cita; y, después de la sesión, preguntarte qué tal ha ido e informarte de la Radiografía mensual, de lo que puedes darte de baja en cualquier momento.
+      </td></tr>
+      <tr><th>Legitimación</th><td>
+        La aplicación de medidas precontractuales y la ejecución del servicio que solicitas (art. 6.1.b RGPD); el cumplimiento de obligaciones legales (art. 6.1.c RGPD); y nuestro interés legítimo en informarte de servicios similares al contratado (art. 6.1.f RGPD y art. 21.2 LSSI-CE), al que puedes oponerte en cualquier momento.
+      </td></tr>
+      <tr><th>Destinatarios</th><td>
+        <strong>El preparador asignado</strong>, al que comunicaremos tu nombre, tu email, el momento de la oposición, la materia y los temas, y el mensaje que nos hayas dejado, con la única finalidad de preparar y realizar la sesión. Los preparadores están sujetos a un compromiso de confidencialidad y no comunicarán nada a tu preparador habitual.<br>
+        <strong>Proveedores de servicios</strong> que actúan como encargados del tratamiento: el servicio de formularios (Formspree) y el correo y almacenamiento (Google). Algunos pueden tratar datos fuera del Espacio Económico Europeo, con las garantías previstas en el RGPD (decisiones de adecuación o cláusulas contractuales tipo).<br>
+        <strong>Administraciones públicas</strong>, cuando exista obligación legal.<br>
+        No vendemos ni cedemos tus datos con fines comerciales.
+      </td></tr>
+      <tr><th>Conservación</th><td>Durante el tiempo necesario para prestar el servicio y cumplir las obligaciones legales, y en ningún caso más de 3 años desde la última interacción.</td></tr>
+      <tr><th>Tus derechos</th><td>
+        Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <a href="mailto:radiografiadetucante@gmail.com">radiografiadetucante@gmail.com</a> o a Avda. de Brasil, 29, 1º, 28020 Madrid. También puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).
+      </td></tr>
+    </table>
+  </section>
 
-  <h3>3.4 Conservación de los datos</h3>
-  <p>Los datos se conservarán durante el tiempo necesario para la prestación del servicio y el cumplimiento de las obligaciones legales aplicables, y en ningún caso más de 3 años desde la última interacción.</p>
+  <!-- 4 -->
+  <section id="propiedad">
+    <h2>4. Propiedad intelectual</h2>
+    <p>Todos los contenidos de esta web (textos, imágenes, logotipos y diseño) son propiedad de la titular o cuentan con las licencias correspondientes. Queda prohibida su reproducción total o parcial sin autorización expresa.</p>
+  </section>
 
-  <h3>3.5 Cesión de datos a terceros</h3>
-  <p>Los datos no serán cedidos a terceros, salvo obligación legal. Únicamente serán accesibles al preparador asignado, en la medida estrictamente necesaria para la prestación del servicio y con el compromiso de confidencialidad.</p>
+  <!-- 5 -->
+  <section id="ley">
+    <h2>5. Legislación aplicable</h2>
+    <p>Estas condiciones se rigen por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales del domicilio del usuario, de conformidad con la normativa de protección de los consumidores.</p>
+  </section>
 
-  <h3>3.6 Derechos del usuario</h3>
-  <p>El usuario puede ejercer en cualquier momento sus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad, dirigiéndose a:</p>
-  <div class="highlight">
-    <strong>Email:</strong> radiografiadetucante@gmail.com<br>
-    <strong>Dirección postal:</strong> Avda. de Brasil, 29, 1º, 28020, Madrid
-  </div>
-  <p>Asimismo, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es).</p>
-
-  <!-- PROPIEDAD INTELECTUAL -->
-  <h2>4. Propiedad intelectual</h2>
-  <p>Todos los contenidos de esta web — textos, imágenes, logotipos y diseño — son propiedad de la titular o cuentan con las licencias correspondientes. Queda prohibida su reproducción total o parcial sin autorización expresa.</p>
-
-  <!-- LEGISLACIÓN -->
-  <h2>5. Legislación aplicable</h2>
-  <p>Las presentes condiciones se rigen por la legislación española. Para cualquier controversia derivada de la prestación del servicio, las partes se someten a los juzgados y tribunales del domicilio del usuario, de conformidad con la normativa de protección de consumidores.</p>
-
-</div>
+</main>
 
 <footer>
-  <p class="footer-links">
-    <a href="index.html">← Volver a la web</a> ·
-    <a href="cookies.html">Política de cookies</a>
-  </p>
+  <a href="index.html">Volver a la web</a> ·
+  <a href="cookies.html">Política de cookies</a> ·
+  <a href="https://www.juecesyfiscales.es" target="_blank" rel="noopener">Un servicio de Jueces y Fiscales</a>
 </footer>
 
 </body>
