@@ -22,6 +22,7 @@
 
 <!-- Google Analytics: solo se carga si se aceptan las cookies -->
 <script>
+  document.documentElement.classList.add('js');
   function loadGA() {
     var s = document.createElement('script');
     s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P1YR4PC5EQ';
@@ -135,9 +136,32 @@
     color: var(--parchment);
   }
 
-  .brand img { width: 38px; height: 38px; padding: 3px; background: #fff; object-fit: contain; border-radius: 50%; }
+  .brand img { width: 40px; height: 40px; object-fit: contain; }
 
-  .nav .btn { padding: 11px 18px; font-size: 11px; letter-spacing: 2px; }
+  .nav .brand { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  .nav.scrolled .brand { opacity: 1; pointer-events: auto; }
+
+  .nav-by {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    color: var(--stone);
+    transition: color 0.2s ease;
+  }
+
+  .nav-by .nb-text { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.15; }
+  .nav-by .nb-pre { font-size: 11px; color: var(--stone); }
+  .nav-by .nb-name { font-size: 14px; color: var(--parchment); font-weight: 600; }
+  .nav-by img { width: 40px; height: 40px; object-fit: contain; }
+  .nav-by:hover .nb-name { color: var(--gold-2); }
+
+  @media (max-width: 480px) {
+    .nav-by .nb-pre { font-size: 10px; }
+    .nav-by .nb-name { font-size: 13px; }
+    .nav-by img { width: 34px; height: 34px; }
+  }
 
   @media (max-width: 480px) {
     .brand span { display: none; }
@@ -157,79 +181,54 @@
 
   .hero .wrap { position: relative; z-index: 2; width: 100%; }
 
-  .hero-logo {
-    width: 150px;
-    height: 150px;
-    padding: 14px;
-    background: #fff;
-    object-fit: contain;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto 34px;
-    box-shadow: 0 0 0 1px rgba(196,154,44,0.35), 0 0 48px rgba(196,154,44,0.25);
-  }
+  .crest { display: flex; flex-direction: column; align-items: center; }
 
-  .eyebrow {
-    font-size: 11px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 22px;
+  .crest > img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 18px rgba(226,191,98,0.3));
   }
 
   .hero h1 {
     font-family: var(--serif);
     font-weight: 600;
-    font-size: clamp(54px, 9vw, 100px);
-    line-height: 0.95;
-    letter-spacing: -1px;
+    font-size: clamp(26px, 3vw, 32px);
+    line-height: 1.1;
+    letter-spacing: 0.3px;
+    margin-top: 16px;
   }
 
   .hero h1 .cante { font-style: italic; font-weight: 500; color: var(--gold); }
 
-  .eyebrow a { text-decoration: none; border-bottom: 1px solid rgba(196,154,44,0.35); padding-bottom: 3px; }
-  .eyebrow a:hover { color: var(--gold-2); }
-
-  @media (max-width: 480px) { .eyebrow { letter-spacing: 3px; font-size: 10px; } }
-
-  .endorse { margin-bottom: 24px; }
-
-  .endorse a {
+  .crest-by {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--stone);
     text-decoration: none;
-    padding: 7px 16px 7px 14px;
-    border: 1px solid var(--line-dark);
-    border-radius: 999px;
-    background: rgba(196,154,44,0.06);
-    transition: border-color 0.2s ease;
   }
 
-  .endorse a:hover { border-color: var(--gold); }
-  .endorse span { font-size: 13px; color: var(--stone); }
-  .endorse img { height: 36px; width: 36px; object-fit: contain; }
-  .endorse strong { font-size: 14px; font-weight: 600; color: var(--parchment); }
-
-  .foot-endorse { margin-top: 8px; }
-  .foot-endorse a { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; }
-  .foot-endorse img { height: 30px; width: 30px; object-fit: contain; }
+  .crest-by:hover { color: var(--gold-2); }
+  .crest-by img { width: 24px; height: 24px; object-fit: contain; }
 
   .rule {
-    width: 48px;
+    width: 44px;
     height: 1px;
     background: var(--gold);
-    margin: 30px auto 26px;
+    margin: 22px auto 0;
   }
 
   .question {
     font-family: var(--serif);
     font-style: italic;
     font-weight: 500;
-    font-size: clamp(24px, 3.4vw, 34px);
-    line-height: 1.25;
-    max-width: 720px;
-    margin: 0 auto;
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.12;
+    max-width: 860px;
+    margin: 26px auto 0;
   }
 
   .contrast-head {
@@ -332,6 +331,28 @@
   .hero .d6 { animation-delay: 1.05s; }
 
   @keyframes rise { to { opacity: 1; transform: none; } }
+
+  .f-short { display: none; }
+
+  /* Portada más ligera en el móvil */
+  @media (max-width: 600px) {
+    .hero { padding: 92px 0 56px; min-height: auto; }
+    .hero .wrap { padding: 0 28px; }
+    .crest > img { width: 76px; height: 76px; }
+    .hero h1 { font-size: 21px; margin-top: 12px; }
+    .rule { margin-top: 18px; width: 32px; }
+    .question { font-size: 31px; line-height: 1.2; margin-top: 22px; }
+    .contrast-head { font-size: 16px; margin-top: 18px; }
+    .contrast { display: none; }
+    .hero-ctas { flex-direction: column; align-items: center; gap: 6px; margin-top: 30px; }
+    .hero-ctas .btn-gold { width: 100%; max-width: 300px; padding: 16px 20px; font-size: 11px; letter-spacing: 2px; }
+    .hero-ctas .btn-ghost { border: 0; padding: 12px; font-size: 11px; letter-spacing: 2px; color: var(--gold-2); }
+    .facts { font-size: 13px; margin-top: 10px; }
+    .f-long { display: none; }
+    .f-short { display: inline; }
+    .wa { width: 48px; height: 48px; right: 14px; bottom: 14px; }
+    .wa svg { width: 24px; height: 24px; }
+  }
 
   /* ---------- SECCIONES ---------- */
   section { padding: 96px 0; }
@@ -783,36 +804,127 @@
   .cookie .btn { padding: 11px 18px; font-size: 11px; }
 
   /* ---------- MOVIMIENTO REDUCIDO ---------- */
+  /* ---------- MOVIMIENTO ---------- */
+  /* Aparición al hacer scroll (solo si hay JavaScript) */
+  .js .rv {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1);
+  }
+  .js .rv.rv-left { transform: translateX(-36px); }
+  .js .rv.rv-right { transform: translateX(36px); }
+  .js .rv.rv-zoom { transform: scale(0.94); }
+  .js .rv.on { opacity: 1; transform: none; }
+
+  /* El sello "respira" con un brillo dorado */
+  .crest > img { animation: breathe 4.5s ease-in-out infinite 1.2s; }
+  @keyframes breathe {
+    0%, 100% { filter: drop-shadow(0 0 14px rgba(226,191,98,0.22)); }
+    50% { filter: drop-shadow(0 0 30px rgba(226,191,98,0.55)); }
+  }
+
+  /* La rayita dorada se dibuja */
+  .crest .rule { animation: drawx 1s ease forwards 0.6s; transform: scaleX(0); }
+  @keyframes drawx { to { transform: scaleX(1); } }
+
+  /* "Cante" con un destello que lo recorre */
+  .hero h1 .cante {
+    background: linear-gradient(100deg, var(--gold) 0%, var(--gold) 42%, #f6dc94 50%, var(--gold) 58%, var(--gold) 100%);
+    background-size: 260% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 5s ease-in-out infinite 1.5s;
+  }
+  @keyframes shine {
+    0%, 55% { background-position: 100% 0; }
+    100% { background-position: -160% 0; }
+  }
+
+  /* Botón principal con un pulso suave */
+  .hero-ctas .btn-gold { position: relative; }
+  .hero-ctas .btn-gold::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--gold-2);
+    animation: ring 2.8s ease-out infinite 2s;
+    pointer-events: none;
+  }
+  @keyframes ring {
+    0% { opacity: 0.7; transform: scale(1); }
+    70%, 100% { opacity: 0; transform: scale(1.12, 1.35); }
+  }
+
+  /* Botón de play con ondas */
+  .video-play .disc { position: relative; }
+  .video-play .disc::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--gold-2);
+    animation: wave 2.2s ease-out infinite;
+  }
+  @keyframes wave {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.7); }
+  }
+
+  /* La línea de los pasos se dibuja al llegar */
+  .js .steps::before { transform: scaleX(0); transform-origin: left; transition: transform 1.6s cubic-bezier(.4,0,.2,1) 0.2s; }
+  .js .steps.on::before { transform: scaleX(1); }
+  @media (max-width: 860px) {
+    .js .steps::before { transform: scaleY(0); transform-origin: top; }
+    .js .steps.on::before { transform: scaleY(1); }
+  }
+  .js .step .n { transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease; }
+  .js .step.on .n { background: var(--gold); color: var(--ink); box-shadow: 0 0 0 6px rgba(196,154,44,0.12); }
+
+  /* Barra de progreso de lectura */
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-2));
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: 70;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .hero .in { animation: none; opacity: 1; transform: none; }
+    .js .rv { opacity: 1; transform: none; transition: none; }
+    .crest > img, .crest .rule, .hero h1 .cante, .hero-ctas .btn-gold::after, .video-play .disc::before { animation: none; }
+    .crest .rule { transform: none; }
+    .js .steps::before { transform: none; transition: none; }
+    .progress { display: none; }
   }
 </style>
 </head>
 <body>
 
+<div class="progress" id="progress" aria-hidden="true"></div>
+
 <!-- NAVEGACIÓN -->
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a href="#" class="brand"><img src="logo.png" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}"><span>Radiografía de tu Cante</span></a>
-    <a href="#reservar" class="btn btn-gold">Solicitar sesión</a>
+    <a href="#" class="brand"><img src="sello.png" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}"><span>Radiografía de tu Cante</span></a>
+    <a class="nav-by" href="https://www.juecesyfiscales.es" target="_blank" rel="noopener"><span class="nb-text"><span class="nb-pre">Un servicio de</span><span class="nb-name">Jueces y Fiscales</span></span><img src="logo-jyf.png" alt="" onerror="this.style.display='none'"></a>
   </div>
 </header>
 
 <!-- PORTADA -->
 <section class="hero">
   <div class="wrap">
-    <img class="hero-logo in d1" src="logo.png" alt="Radiografía de tu Cante" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}">
-    <p class="endorse in d2">
-      <a href="https://www.juecesyfiscales.es" target="_blank" rel="noopener">
-        <span>Un servicio de</span>
-        <img src="logo-jyf.png" alt="" onerror="this.style.display='none'">
-        <strong>Jueces y Fiscales</strong>
-      </a>
-    </p>
-    <h1 class="in d3">Radiografía<br>de tu <span class="cante">Cante</span></h1>
-    <div class="rule in d4"></div>
-    <p class="question in d4">¿Sabes realmente cómo suenas ante un tribunal?</p>
+    <div class="crest in d1">
+      <img src="sello.png" alt="" onerror="this.src='logo.png'">
+      <h1>Radiografía de tu <span class="cante">Cante</span></h1>
+      <div class="rule"></div>
+    </div>
+    <p class="question in d3">¿Sabes realmente cómo suenas ante un tribunal?</p>
     <div class="in d5">
       <p class="contrast-head">Tu preparador te conoce. El tribunal, no.</p>
       <p class="contrast">Canta ante otro preparador, ajeno a tu día a día, y ponte a prueba.</p>
@@ -822,7 +934,7 @@
         <a href="#reservar" class="btn btn-gold">Solicitar mi sesión online</a>
         <a href="#testimonio" class="btn btn-ghost" id="watchBtn"><span class="play"></span>Ver testimonio</a>
       </div>
-      <p class="facts">Sesión suelta de 30 minutos por videollamada · <b>49 €</b> · Confidencial</p>
+      <p class="facts"><span class="f-long">Sesión suelta de 30 minutos por videollamada</span><span class="f-short">30 minutos online</span> · <b>49&nbsp;€</b> · Confidencial</p>
     </div>
   </div>
 </section>
@@ -1042,7 +1154,7 @@
 <footer>
   <div class="wrap foot">
     <div>
-      <a href="#" class="brand" style="font-size:18px"><img src="logo.png" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}">Radiografía de tu Cante</a>
+      <a href="#" class="brand" style="font-size:18px"><img src="sello.png" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}">Radiografía de tu Cante</a>
       <p class="foot-endorse">Un servicio de <a href="https://www.juecesyfiscales.es" target="_blank" rel="noopener"><img src="logo-jyf.png" alt="" onerror="this.style.display='none'">Jueces y Fiscales</a></p>
       <p style="margin-top:10px"><a href="tel:+34640863719">640 863 719</a> · <a href="mailto:radiografiadetucante@gmail.com">radiografiadetucante@gmail.com</a></p>
     </div>
@@ -1070,6 +1182,66 @@
 </div>
 
 <script>
+  // Apariciones al avanzar por la página
+  (function() {
+    var groups = [
+      ['.supremo-sec .supremo', 'rv-left'],
+      ['.supremo-sec .video-col', 'rv-right'],
+      ['.why .h2', ''],
+      ['.why-item', ''],
+      ['.how .h2', ''],
+      ['.how-note', 'rv-left'],
+      ['.monthly-note', ''],
+      ['.book-aside', 'rv-left'],
+      ['#solicitudForm', 'rv-right'],
+      ['.tutors-inner > div', ''],
+      ['.tutors-inner > .btn', 'rv-zoom']
+    ];
+    groups.forEach(function(g) {
+      document.querySelectorAll(g[0]).forEach(function(el, i) {
+        el.classList.add('rv');
+        if (g[1]) el.classList.add(g[1]);
+        el.style.transitionDelay = (i * 0.15) + 's';
+      });
+    });
+    var steps = document.querySelector('.steps');
+    var stepItems = document.querySelectorAll('.step');
+    stepItems.forEach(function(el, i) {
+      el.classList.add('rv');
+      el.style.transitionDelay = (0.25 + i * 0.22) + 's';
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.rv, .steps').forEach(function(el) { el.classList.add('on'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('on');
+        io.unobserve(e.target);
+        if (e.target === steps) {
+          stepItems.forEach(function(st, i) {
+            setTimeout(function() { st.classList.add('on'); }, 350 + i * 260);
+          });
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.rv').forEach(function(el) { if (!el.classList.contains('step')) io.observe(el); });
+    if (steps) io.observe(steps);
+  })();
+
+  // Barra de progreso de lectura
+  (function() {
+    var bar = document.getElementById('progress');
+    function upd() {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')';
+    }
+    window.addEventListener('scroll', upd, { passive: true });
+    upd();
+  })();
+
   // Navegación: fondo al hacer scroll
   var nav = document.getElementById('nav');
   function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 40); }
