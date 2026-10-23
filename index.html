@@ -250,19 +250,28 @@
 
   .duo {
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 48px;
-    align-items: center;
+    align-items: stretch;
   }
 
-  .duo .supremo { margin: 0; text-align: left; }
+  .duo .supremo {
+    margin: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 28px 32px;
+  }
 
-  .video-col { max-width: 440px; width: 100%; justify-self: end; }
+  .duo .supremo p { text-wrap: balance; }
+
+  .video-col { position: relative; width: 100%; max-width: 520px; justify-self: end; }
+  .video-col .video-alt { position: absolute; left: 0; right: 0; top: 100%; }
 
   @media (max-width: 860px) {
     .duo { grid-template-columns: 1fr; gap: 36px; }
-    .duo .supremo { text-align: center; }
-    .video-col { justify-self: center; }
+    .video-col { justify-self: center; margin-bottom: 28px; }
   }
 
   .supremo {
