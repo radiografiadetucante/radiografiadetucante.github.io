@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Únete como preparador | Radiografía de tu Cante</title>
+<meta name="description" content="Forma parte de la red de preparadores de Radiografía de tu Cante.">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="theme-color" content="#0e0b07">
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0b07;
+    --parchment: #f7f2ea;
+    --gold: #b8922a;
+    --gold-light: #d4a843;
+    --gold-pale: #f0e6cc;
+    --cream: #faf6ef;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* CABECERA */
+  .head {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, #2a1f0e 0%, transparent 60%),
+      var(--ink);
+    color: var(--parchment);
+    text-align: center;
+    padding: 56px 24px 64px;
+  }
+
+  .head a.back {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    margin-bottom: 28px;
+    opacity: 0.8;
+  }
+
+  .head a.back:hover { opacity: 1; }
+
+  .head img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 18px rgba(184,146,42,0.35));
+    margin-bottom: 18px;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .head h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 6vw, 56px);
+    font-weight: 600;
+    line-height: 1.05;
+    margin-bottom: 18px;
+  }
+
+  .head h1 em { color: var(--gold); font-style: italic; font-weight: 400; }
+
+  .head p {
+    max-width: 520px;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #b0a598;
+  }
+
+  /* FORMULARIO */
+  main { padding: 64px 16px 80px; }
+
+  .form-wrap { max-width: 640px; margin: 0 auto; }
+
+  .block {
+    background: var(--white);
+    border-top: 3px solid var(--gold);
+    padding: 28px 24px;
+    margin-bottom: 18px;
+  }
+
+  .block-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  .block-title span {
+    color: var(--gold);
+    font-size: 15px;
+    margin-right: 8px;
+  }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 520px) { .form-grid { grid-template-columns: 1fr; } }
+
+  .form-group { margin-bottom: 18px; }
+  .form-group:last-child { margin-bottom: 0; }
+
+  label.field {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .opt { text-transform: none; letter-spacing: 0; opacity: 0.7; }
+
+  input[type="text"], input[type="email"], input[type="tel"], textarea {
+    width: 100%;
+    background: var(--cream);
+    border: 1px solid rgba(184,146,42,0.25);
+    border-bottom: 2px solid rgba(184,146,42,0.4);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    padding: 12px 14px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  input:focus, textarea:focus {
+    border-color: var(--gold);
+    background: var(--white);
+  }
+
+  input::placeholder, textarea::placeholder { color: #b0a090; }
+  textarea { resize: vertical; min-height: 96px; }
+
+  .q { font-size: 13px; color: #4a3f35; margin: 0 0 10px; }
+  .q + .chips { margin-bottom: 4px; }
+
+  /* BOTONES DE OPCIÓN */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .chips input {
+    position: absolute;
+    opacity: 0;
+    width: 1px; height: 1px;
+    pointer-events: none;
+  }
+
+  .chips label {
+    font-size: 13px;
+    color: #4a3f35;
+    background: var(--white);
+    border: 1px solid rgba(184,146,42,0.35);
+    padding: 9px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+
+  .chips label:hover { border-color: var(--gold); }
+
+  .chips input:checked + label {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+  }
+
+  .chips input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .chips label.all {
+    border-style: dashed;
+    color: var(--gold);
+  }
+
+  .reveal-box { margin-top: 18px; }
+
+  .note { font-size: 12px; color: #8a7f72; line-height: 1.6; margin-top: 8px; }
+
+  /* CUADRÍCULA DE DISPONIBILIDAD */
+  .grid-wrap { overflow-x: auto; }
+
+  table.avail {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 3px;
+    table-layout: fixed;
+  }
+
+  table.avail thead th:first-child, table.avail th.day { width: 78px; }
+  @media (max-width: 400px) { table.avail thead th:first-child, table.avail th.day { width: 66px; } }
+
+  table.avail th {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    text-transform: none;
+    padding: 4px 2px;
+    text-align: center;
+  }
+
+  table.avail th small {
+    display: block;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #8a7f72;
+    font-weight: 400;
+    font-size: 10px;
+    margin-top: 2px;
+  }
+
+  table.avail th.day {
+    text-align: left;
+    color: #4a3f35;
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 500;
+    white-space: nowrap;
+    padding-right: 6px;
+  }
+
+  table.avail td { padding: 0; }
+
+  table.avail th.hour {
+    text-align: right;
+    color: #4a3f35;
+    font-size: 11px;
+    letter-spacing: 0;
+    font-weight: 500;
+    white-space: nowrap;
+    padding-right: 6px;
+  }
+
+  table.avail td.off {
+    background: repeating-linear-gradient(135deg, transparent, transparent 4px, rgba(184,146,42,0.08) 4px, rgba(184,146,42,0.08) 5px);
+  }
+
+  table.avail tr.split td, table.avail tr.split th { border-top: 0; }
+  table.avail tr.split th.hour { padding-top: 10px; }
+
+  table.avail input {
+    position: absolute;
+    opacity: 0;
+    width: 1px; height: 1px;
+    pointer-events: none;
+  }
+
+  table.avail label {
+    display: block;
+    height: 30px;
+    background: var(--cream);
+    border: 1px solid rgba(184,146,42,0.25);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+  }
+
+  table.avail label:hover { border-color: var(--gold); }
+
+  table.avail input:checked + label {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
+  table.avail input:checked + label::after {
+    content: '✓';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  table.avail input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 1px; }
+
+  /* CONSENTIMIENTO Y ENVÍO */
+  .consent {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .consent input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px; min-width: 20px; height: 20px;
+    border: 2px solid rgba(184,146,42,0.5);
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    margin-top: 2px;
+  }
+
+  .consent input:checked { background: var(--gold); border-color: var(--gold); }
+
+  .consent input:checked::after {
+    content: '✕';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  .consent + .consent { margin-top: 14px; }
+  .consent .req { font-size: 11px; opacity: 0.6; }
+  .consent:last-of-type { margin-bottom: 10px; }
+
+  .consent label { font-size: 13px; color: #4a3f35; line-height: 1.6; cursor: pointer; }
+  .consent a { color: var(--gold); text-decoration: none; }
+  .consent a:hover { text-decoration: underline; }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 18px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .submit-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .submit-btn:disabled { opacity: 0.6; cursor: wait; transform: none; }
+
+  .form-error { color: #9b2c2c; font-size: 13px; margin-top: 12px; text-align: center; }
+
+  .thanks {
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold);
+    padding: 36px 28px;
+    text-align: center;
+  }
+
+  .thanks h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  .thanks p { font-size: 14px; color: #4a3f35; line-height: 1.7; }
+  .thanks a { color: var(--gold); }
+
+  footer {
+    background: #080604;
+    padding: 36px 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #6a5f55;
+  }
+
+  footer a { color: var(--gold); text-decoration: none; opacity: 0.7; margin: 0 8px; }
+  footer a:hover { opacity: 1; }
+</style>
+</head>
+<body>
+
+<header class="head">
+  <a href="index.html" class="back">← Volver a la web</a><br>
+  <img src="logo.png" alt="Radiografía de tu Cante" onerror="this.style.display='none'">
+  <span class="eyebrow">Red de preparadores</span>
+  <h1>Únete como<br><em>preparador</em></h1>
+  <p>Escucha a opositores que no te conocen y ayúdales a llegar mejor al examen. Rellena en unos segundos este formulario y te avisaremos cuando haya un opositor para ti.</p>
+  <p style="margin-top:12px">Te enviaremos cada cita con la fecha y el enlace de la videollamada. Un clic y estás dentro, sin instalar nada.</p>
+</header>
+
+<main>
+  <div class="form-wrap">
+    <form id="prepForm" action="https://formspree.io/f/mykajblp" method="POST">
+      <input type="hidden" name="_subject" value="Radiografía de tu Cante — Nuevo preparador">
+      <input type="hidden" name="tipo" value="Preparador">
+
+      <!-- 1. DATOS -->
+      <div class="block">
+        <h2 class="block-title"><span>01</span>Tus datos</h2>
+        <div class="form-group">
+          <label class="field" for="nombre">Nombre y apellidos</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="field" for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label class="field" for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" required>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <p class="q">Carrera</p>
+            <div class="chips">
+              <input type="radio" id="car-juez" name="carrera" value="Juez" required><label for="car-juez">Juez</label>
+              <input type="radio" id="car-fiscal" name="carrera" value="Fiscal"><label for="car-fiscal">Fiscal</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="field" for="provincia">Provincia</label>
+            <input type="text" id="provincia" name="provincia" placeholder="Ej: Valencia" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. EXPERIENCIA -->
+      <div class="block">
+        <h2 class="block-title"><span>02</span>Experiencia</h2>
+        <p class="q">¿Tienes experiencia preparando opositores?</p>
+        <div class="chips">
+          <input type="radio" id="exp-si" name="experiencia" value="Sí" required><label for="exp-si">Sí</label>
+          <input type="radio" id="exp-no" name="experiencia" value="No"><label for="exp-no">No</label>
+        </div>
+        <div class="reveal-box" id="temarioBox" hidden>
+          <label class="field" for="temario">¿Qué temario recomiendas a tus alumnos?</label>
+          <textarea id="temario" name="temario_recomendado" placeholder="Escríbelo con tus palabras"></textarea>
+        </div>
+      </div>
+
+      <!-- 3. MATERIAS -->
+      <div class="block">
+        <h2 class="block-title"><span>03</span>Materias</h2>
+        <p class="q">¿De qué materias quieres tomar temas? Puedes marcar varias.</p>
+        <div class="chips" id="materias">
+          <input type="checkbox" id="mat-all"><label for="mat-all" class="all">Marcar todas</label>
+          <input type="checkbox" id="mat-1" name="materias" value="Constitucional"><label for="mat-1">Constitucional</label>
+          <input type="checkbox" id="mat-2" name="materias" value="Civil"><label for="mat-2">Civil</label>
+          <input type="checkbox" id="mat-3" name="materias" value="Penal"><label for="mat-3">Penal</label>
+          <input type="checkbox" id="mat-4" name="materias" value="Procesal civil"><label for="mat-4">Procesal civil</label>
+          <input type="checkbox" id="mat-5" name="materias" value="Procesal penal"><label for="mat-5">Procesal penal</label>
+          <input type="checkbox" id="mat-6" name="materias" value="Mercantil"><label for="mat-6">Mercantil</label>
+          <input type="checkbox" id="mat-7" name="materias" value="Administrativo / Laboral"><label for="mat-7">Administrativo / Laboral</label>
+        </div>
+        <p class="form-error" id="materiasError" hidden>Marca al menos una materia.</p>
+      </div>
+
+      <!-- 4. DISPONIBILIDAD -->
+      <div class="block">
+        <h2 class="block-title"><span>04</span>Disponibilidad habitual</h2>
+        <p class="q">Marca las horas a las que sueles poder empezar una sesión. Es orientativo: siempre te consultaremos antes de cerrar una cita.</p>
+        <div class="grid-wrap">
+          <table class="avail" id="availTable">
+            <thead><tr><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="q" style="margin-top:22px">¿Tienes también disponibilidad los fines de semana?</p>
+        <div class="chips">
+          <input type="radio" id="fin-si" name="fines_de_semana" value="Sí"><label for="fin-si">Sí</label>
+          <input type="radio" id="fin-no" name="fines_de_semana" value="No" checked><label for="fin-no">No</label>
+        </div>
+        <div class="reveal-box" id="findeBox" hidden>
+          <label class="field" for="finde">Tu disponibilidad en fin de semana</label>
+          <textarea id="finde" name="disponibilidad_fin_de_semana" placeholder="Ej: sábados de 10:00 a 14:00; domingos por la tarde"></textarea>
+        </div>
+        <div class="form-group" style="margin-top:18px">
+          <label class="field" for="observaciones">Observaciones <span class="opt">(opcional)</span></label>
+          <textarea id="observaciones" name="observaciones" placeholder="Ej: los viernes solo hasta las 18:00; en agosto no estoy disponible..."></textarea>
+        </div>
+        <p class="form-error" id="availError" hidden>Marca al menos una franja de disponibilidad.</p>
+      </div>
+
+      <!-- 5. COBRO -->
+      <div class="block">
+        <h2 class="block-title"><span>05</span>Cobro de las sesiones</h2>
+        <p class="q">¿Cómo quieres que te paguen los opositores?</p>
+        <div class="chips">
+          <input type="radio" id="pago-bizum" name="forma_pago" value="Bizum" required><label for="pago-bizum">Bizum</label>
+          <input type="radio" id="pago-transf" name="forma_pago" value="Transferencia bancaria"><label for="pago-transf">Transferencia bancaria</label>
+        </div>
+
+        <div class="reveal-box" id="bizumBox" hidden>
+          <label class="field" for="bizum_telefono">Teléfono para el Bizum</label>
+          <input type="tel" id="bizum_telefono" name="bizum_telefono" placeholder="Ej: 600 000 000">
+          <p class="note">Ten en cuenta que el opositor verá este número al hacerte el Bizum.</p>
+        </div>
+
+        <div class="reveal-box" id="transfBox" hidden>
+          <div class="form-group">
+            <label class="field" for="iban">IBAN</label>
+            <input type="text" id="iban" name="iban" placeholder="ES00 0000 0000 0000 0000 0000" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label class="field" for="titular">Titular de la cuenta</label>
+            <input type="text" id="titular" name="titular_cuenta">
+          </div>
+        </div>
+        <p class="note" style="margin-top:14px">Solo facilitaremos estos datos al opositor cuando la cita esté confirmada, para que pueda pagarte.</p>
+      </div>
+
+      <!-- 6. CONSENTIMIENTO -->
+      <div class="block">
+        <h2 class="block-title"><span>06</span>Aceptación</h2>
+        <input type="hidden" name="version_condiciones" value="Condiciones para preparadores v1 (octubre 2026)">
+        <input type="hidden" name="fecha_aceptacion" id="fechaAceptacion" value="">
+
+        <div class="consent">
+          <input type="checkbox" id="acepta_contrato" name="acepta_condiciones_colaboracion" value="Sí" required>
+          <label for="acepta_contrato">He leído y acepto las <a href="condiciones-preparadores.html#colaboracion" target="_blank">condiciones de colaboración</a>, incluida la gratuidad durante la fase de lanzamiento y la retribución posterior a la Plataforma por cada sesión concertada. <em class="req">(Obligatorio)</em></label>
+        </div>
+        <div class="consent">
+          <input type="checkbox" id="acepta_confid" name="acepta_confidencialidad" value="Sí" required>
+          <label for="acepta_confid">Me comprometo a cumplir el <a href="condiciones-preparadores.html#confidencialidad" target="_blank">compromiso de confidencialidad</a> sobre la identidad de los opositores y el contenido de las sesiones. <em class="req">(Obligatorio)</em></label>
+        </div>
+        <div class="consent">
+          <input type="checkbox" id="acepta_datos" name="acepta_proteccion_datos" value="Sí" required>
+          <label for="acepta_datos">He leído la <a href="condiciones-preparadores.html#privacidad" target="_blank">información sobre protección de datos</a> y quedo informado de que, al confirmarse cada cita, mi nombre, provincia, carrera, email y datos de cobro se comunicarán al opositor asignado. <em class="req">(Obligatorio)</em></label>
+        </div>
+        <div class="consent">
+          <input type="checkbox" id="acepta_info" name="acepta_comunicaciones" value="Sí">
+          <label for="acepta_info">Quiero recibir por email novedades sobre la Plataforma. <em class="req">(Opcional)</em></label>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Enviar mi solicitud →</button>
+        <p class="form-error" id="formError" hidden>No se ha podido enviar. Inténtalo de nuevo o escríbenos a radiografiadetucante@gmail.com.</p>
+      </div>
+    </form>
+
+    <div class="thanks" id="thanks" hidden>
+      <h2>¡Gracias por unirte!</h2>
+      <p>Hemos recibido tus datos. Nuestro equipo se pondrá en contacto contigo en breve.<br>Si cambia tu disponibilidad, puedes volver a rellenar este formulario cuando quieras.</p>
+      <p style="margin-top:16px"><a href="index.html">Volver a la web</a></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <a href="mailto:radiografiadetucante@gmail.com">radiografiadetucante@gmail.com</a> ·
+  <a href="condiciones-preparadores.html">Condiciones para preparadores</a>
+</footer>
+
+<script>
+  // Cuadrícula de disponibilidad: lunes a viernes, de 15:00 a 22:00
+  (function() {
+    var dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+    var table = document.getElementById('availTable');
+    var headRow = table.querySelector('thead tr');
+    for (var h = 15; h <= 22; h++) {
+      var th = document.createElement('th');
+      th.textContent = h + 'h';
+      headRow.appendChild(th);
+    }
+    var tbody = table.querySelector('tbody');
+    dias.forEach(function(d, i) {
+      var tr = document.createElement('tr');
+      var th = document.createElement('th');
+      th.className = 'day';
+      th.textContent = d;
+      tr.appendChild(th);
+      for (var h = 15; h <= 22; h++) {
+        var hora = h + ':00';
+        var id = 'av-' + i + '-' + h;
+        var td = document.createElement('td');
+        td.innerHTML = '<input type="checkbox" id="' + id + '" name="disponibilidad" value="' + d + ' ' + hora + '">' +
+                       '<label for="' + id + '" title="' + d + ' ' + hora + '" aria-label="' + d + ' a las ' + hora + '"></label>';
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    });
+  })();
+
+  // Fin de semana: campo de texto solo si responde que sí
+  document.querySelectorAll('input[name="fines_de_semana"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      document.getElementById('findeBox').hidden = !document.getElementById('fin-si').checked;
+    });
+  });
+
+  // Temario: solo si tiene experiencia
+  document.querySelectorAll('input[name="experiencia"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      var si = document.getElementById('exp-si').checked;
+      document.getElementById('temarioBox').hidden = !si;
+    });
+  });
+
+  // Forma de cobro: muestra y exige el campo que corresponda
+  document.querySelectorAll('input[name="forma_pago"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      var bizum = document.getElementById('pago-bizum').checked;
+      document.getElementById('bizumBox').hidden = !bizum;
+      document.getElementById('transfBox').hidden = bizum;
+      document.getElementById('bizum_telefono').required = bizum;
+      document.getElementById('iban').required = !bizum;
+      document.getElementById('titular').required = !bizum;
+    });
+  });
+
+  // Marcar todas las materias
+  var all = document.getElementById('mat-all');
+  var mats = document.querySelectorAll('input[name="materias"]');
+  all.addEventListener('change', function() {
+    mats.forEach(function(m) { m.checked = all.checked; });
+  });
+  mats.forEach(function(m) {
+    m.addEventListener('change', function() {
+      all.checked = Array.prototype.every.call(mats, function(x) { return x.checked; });
+    });
+  });
+
+  // Envío
+  document.getElementById('prepForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = this;
+    var ok = true;
+
+    var hayMateria = Array.prototype.some.call(mats, function(m) { return m.checked; });
+    document.getElementById('materiasError').hidden = hayMateria;
+    var hayFranja = form.querySelectorAll('input[name="disponibilidad"]:checked').length > 0;
+    document.getElementById('availError').hidden = hayFranja;
+    if (!hayMateria) { ok = false; document.getElementById('materias').scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    else if (!hayFranja) { ok = false; document.getElementById('availTable').scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    if (!ok) return;
+
+    document.getElementById('fechaAceptacion').value = new Date().toISOString();
+    var btn = document.getElementById('submitBtn');
+    var err = document.getElementById('formError');
+    err.hidden = true;
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    // Agrupa las opciones múltiples en un solo campo legible
+    var data = new FormData(form);
+    ['materias', 'disponibilidad'].forEach(function(k) {
+      var vals = data.getAll(k);
+      data.delete(k);
+      data.append(k, vals.join(', '));
+    });
+
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (!r.ok) throw new Error();
+      form.hidden = true;
+      document.getElementById('thanks').hidden = false;
+      window.scrollTo({ top: document.querySelector('main').offsetTop - 20, behavior: 'smooth' });
+    }).catch(function() {
+      err.hidden = false;
+      btn.disabled = false;
+      btn.textContent = 'Enviar mi solicitud →';
+    });
+  });
+</script>
+
+</body>
+</html>
