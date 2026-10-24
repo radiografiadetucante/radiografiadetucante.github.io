@@ -395,7 +395,7 @@
 
 <main>
   <div class="form-wrap">
-    <form id="prepForm" action="https://formspree.io/f/mykajblp" method="POST">
+    <form id="prepForm" action="https://script.google.com/macros/s/AKfycbzvwAp5EQE6Uln9QmVbxbOxDP-uEj8botACmVZOlPUXx64GUtBuYOY5BtZgVtjJMGvn/exec" method="POST">
       <input type="hidden" name="_subject" value="Radiografía de tu Cante — Nuevo preparador">
       <input type="hidden" name="tipo" value="Preparador">
 
@@ -644,18 +644,19 @@
     btn.disabled = true;
     btn.textContent = 'Enviando...';
 
-    // Agrupa las opciones múltiples en un solo campo legible
+    // Agrupa las opciones múltiples y envía como JSON
     var data = new FormData(form);
+    var obj = {};
+    data.forEach(function(v, k) { if (!obj[k]) obj[k] = v; });
     ['materias', 'disponibilidad'].forEach(function(k) {
-      var vals = data.getAll(k);
-      data.delete(k);
-      data.append(k, vals.join(', '));
+      obj[k] = Array.from(form.querySelectorAll('input[name="' + k + '"]:checked')).map(function(c){ return c.value; });
     });
+    obj['tipo'] = 'Preparador';
 
     fetch(form.action, {
       method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
+      body: JSON.stringify(obj),
+      headers: { 'Content-Type': 'application/json' }
     }).then(function(r) {
       if (!r.ok) throw new Error();
       form.hidden = true;
