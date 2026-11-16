@@ -194,6 +194,8 @@
   .note { font-size: 12px; color: #8a7f72; line-height: 1.6; margin-top: 8px; }
 
   /* CUADRÍCULA DE DISPONIBILIDAD */
+  #availFinde thead th { letter-spacing: 0; font-size: 11px; }
+  #availFinde + .unit, .finde-unit { font-size: 12px; opacity: .7; }
   .grid-wrap { overflow-x: auto; }
 
   table.avail {
@@ -466,7 +468,7 @@
       <!-- 4. DISPONIBILIDAD -->
       <div class="block">
         <h2 class="block-title">Disponibilidad habitual</h2>
-        <p class="q">Marca las horas a las que sueles poder empezar una sesión. Es orientativo: siempre te consultaremos antes de cerrar una cita.</p>
+        <p class="q">Marca las horas a las que sueles poder empezar una sesión. El opositor elegirá entre estos huecos y tú siempre confirmarás la cita antes de cerrarla. Podrás cambiar tu disponibilidad cuando quieras con el enlace que te enviaremos.</p>
         <div class="grid-wrap">
           <table class="avail" id="availTable">
             <thead><tr><th></th></tr></thead>
@@ -479,8 +481,13 @@
           <input type="radio" id="fin-no" name="fines_de_semana" value="No" checked><label for="fin-no">No</label>
         </div>
         <div class="reveal-box" id="findeBox" hidden>
-          <label class="field" for="finde">Tu disponibilidad en fin de semana</label>
-          <textarea id="finde" name="disponibilidad_fin_de_semana" placeholder="Ej: sábados de 10:00 a 14:00; domingos por la tarde"></textarea>
+          <p class="q" style="margin-top:4px">Marca también las horas del fin de semana (de 9:00 a 21:00).</p>
+          <div class="grid-wrap">
+            <table class="avail" id="availFinde">
+              <thead><tr><th></th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
         </div>
         <div class="form-group" style="margin-top:18px">
           <label class="field" for="observaciones">Observaciones <span class="opt">(opcional)</span></label>
@@ -520,12 +527,12 @@
       <!-- 6. CONSENTIMIENTO -->
       <div class="block">
         <h2 class="block-title">Aceptación</h2>
-        <input type="hidden" name="version_condiciones" value="Condiciones para preparadores v1 (octubre 2026)">
+        <input type="hidden" name="version_condiciones" value="Condiciones para preparadores v2 (noviembre 2026)">
         <input type="hidden" name="fecha_aceptacion" id="fechaAceptacion" value="">
 
         <div class="consent">
           <input type="checkbox" id="acepta_contrato" name="acepta_condiciones_colaboracion" value="Sí" required>
-          <label for="acepta_contrato">He leído y acepto las <a href="condiciones-preparadores.html#colaboracion" target="_blank">condiciones de colaboración</a>, incluida la gratuidad durante la fase de lanzamiento y la retribución posterior a la Plataforma por cada sesión concertada. <em class="req">(Obligatorio)</em></label>
+          <label for="acepta_contrato">He leído y acepto las <a href="condiciones-preparadores.html#colaboracion" target="_blank">condiciones de colaboración</a>, incluidas las tres primeras sesiones sin coste, el importe posterior por sesión por el servicio de intermediación y búsqueda de alumnos, y el compromiso de no ofrecer mis servicios a los opositores de la Plataforma. <em class="req">(Obligatorio)</em></label>
         </div>
         <div class="consent">
           <input type="checkbox" id="acepta_confid" name="acepta_confidencialidad" value="Sí" required>
@@ -533,11 +540,11 @@
         </div>
         <div class="consent">
           <input type="checkbox" id="acepta_datos" name="acepta_proteccion_datos" value="Sí" required>
-          <label for="acepta_datos">He leído la <a href="condiciones-preparadores.html#privacidad" target="_blank">información sobre protección de datos</a> y quedo informado de que, al confirmarse cada cita, mi nombre, provincia, carrera, email y datos de cobro se comunicarán al opositor asignado. <em class="req">(Obligatorio)</em></label>
+          <label for="acepta_datos">He leído la <a href="condiciones-preparadores.html#privacidad" target="_blank">información sobre protección de datos</a> y quedo informado de que, al confirmarse cada cita, mi nombre, provincia, carrera y datos de cobro se comunicarán al opositor asignado. <em class="req">(Obligatorio)</em></label>
         </div>
 
         <button type="submit" class="submit-btn" id="submitBtn">Enviar mi solicitud →</button>
-        <p class="form-error" id="formError" hidden>No se ha podido enviar. Inténtalo de nuevo o escríbenos a radiografiadetucante@gmail.com.</p>
+        <p class="form-error" id="formError" hidden>No se ha podido enviar. Inténtalo de nuevo o escríbenos a info@radiografiadetucante.es.</p>
       </div>
     </form>
 
@@ -551,7 +558,7 @@
 
 <footer>
   <a href="https://www.juecesyfiscales.es" target="_blank" rel="noopener">Un servicio de Jueces y Fiscales</a> ·
-  <a href="mailto:radiografiadetucante@gmail.com">radiografiadetucante@gmail.com</a> ·
+  <a href="mailto:info@radiografiadetucante.es">info@radiografiadetucante.es</a> ·
   <a href="condiciones-preparadores.html">Condiciones para preparadores</a>
 </footer>
 
@@ -585,10 +592,39 @@
     });
   })();
 
-  // Fin de semana: campo de texto solo si responde que sí
+  // Fin de semana: cuadrícula por horas (sábado y domingo, de 9:00 a 21:00), solo si responde que sí
+  (function() {
+    var dias = ['Sábado', 'Domingo'];
+    var table = document.getElementById('availFinde');
+    var headRow = table.querySelector('thead tr');
+    for (var h = 9; h <= 21; h++) {
+      var th = document.createElement('th');
+      th.textContent = h;
+      headRow.appendChild(th);
+    }
+    var tbody = table.querySelector('tbody');
+    dias.forEach(function(d, i) {
+      var tr = document.createElement('tr');
+      var th = document.createElement('th');
+      th.className = 'day';
+      th.textContent = d;
+      tr.appendChild(th);
+      for (var h = 9; h <= 21; h++) {
+        var hora = h + ':00';
+        var id = 'avf-' + i + '-' + h;
+        var td = document.createElement('td');
+        td.innerHTML = '<input type="checkbox" id="' + id + '" name="disponibilidad" value="' + d + ' ' + hora + '">' +
+                       '<label for="' + id + '" title="' + d + ' ' + hora + '" aria-label="' + d + ' a las ' + hora + '"></label>';
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    });
+  })();
   document.querySelectorAll('input[name="fines_de_semana"]').forEach(function(r) {
     r.addEventListener('change', function() {
-      document.getElementById('findeBox').hidden = !document.getElementById('fin-si').checked;
+      var si = document.getElementById('fin-si').checked;
+      document.getElementById('findeBox').hidden = !si;
+      if (!si) document.querySelectorAll('#availFinde input').forEach(function(c) { c.checked = false; });
     });
   });
 

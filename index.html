@@ -589,6 +589,9 @@
     color: var(--ink);
   }
 
+  .launch-note { font-size: 13px; color: #8a6d22; margin: 10px 0 0; line-height: 1.45; }
+  .check + .check { margin-top: 14px; }
+  .f-launch { font-size: .85em; opacity: .8; }
   .price .per { font-size: 15px; color: #6b5f50; line-height: 1.4; }
 
   .book-contact { margin-top: 28px; font-size: 15px; color: #6b5f50; line-height: 1.9; }
@@ -943,7 +946,7 @@
         <a href="#reservar" class="btn btn-gold">Solicitar mi sesión online</a>
         <a href="#testimonio" class="btn btn-ghost" id="watchBtn"><span class="play"></span>Ver testimonio</a>
       </div>
-      <p class="facts"><span class="f-long">Sesión suelta de 30 minutos por videollamada</span><span class="f-short">30 minutos online</span> · <b>49&nbsp;€</b> · Confidencial</p>
+      <p class="facts"><span class="f-long">Sesión suelta de 30 minutos por videollamada</span><span class="f-short">30 minutos online</span> · <b>49&nbsp;€</b> <span class="f-launch">(precio de lanzamiento)</span> · Confidencial</p>
     </div>
   </div>
 </section>
@@ -998,7 +1001,7 @@
       <li class="step">
         <span class="n">2</span>
         <h3>Te proponemos preparador</h3>
-        <p>Adecuado a tu perfil. Si no te encaja, te proponemos otro.</p>
+        <p>Adecuado a tu perfil. Nunca de tu provincia ni tu preparador habitual.</p>
       </li>
       <li class="step">
         <span class="n">3</span>
@@ -1034,10 +1037,11 @@
         <span class="amount">49 €</span>
         <span class="per">por sesión<br>30 minutos online</span>
       </div>
+      <p class="launch-note">Precio de lanzamiento hasta el 30 de junio de 2027 (después, 79&nbsp;€).</p>
       <p class="book-contact">
         ¿Dudas? <a href="https://wa.me/34640863719" target="_blank" rel="noopener">Escríbenos por WhatsApp</a><br>
         o llama al <a href="tel:+34640863719">640 863 719</a> (L-V, 9-14 y 15-19 h)<br>
-        <a href="mailto:radiografiadetucante@gmail.com">radiografiadetucante@gmail.com</a>
+        <a href="mailto:info@radiografiadetucante.es">info@radiografiadetucante.es</a>
       </p>
     </aside>
 
@@ -1124,11 +1128,23 @@
             <input type="radio" id="ccaa-ind" name="otra_comunidad" value="Indistinto" checked><label for="ccaa-ind">Indistinto</label>
           </div>
 
+          <div class="field" style="margin-top:16px">
+            <label for="preparador_actual">¿Quién es tu preparador actual? <span class="opt">(opcional y confidencial)</span></label>
+            <input type="text" id="preparador_actual" name="preparador_actual" autocomplete="off">
+            <p class="hint" style="margin-top:6px">Solo para no asignarte a tu propio preparador. Nunca se lo diremos a nadie.</p>
+          </div>
+
         </div>
 
         <div class="field">
           <label for="mensaje">¿Qué esperas de la sesión? <span class="opt">(opcional)</span></label>
           <textarea id="mensaje" name="mensaje"></textarea>
+        </div>
+
+        <input type="hidden" name="version_condiciones" value="Condiciones del servicio v2 (noviembre 2026)">
+        <div class="check">
+          <input type="checkbox" id="desistimiento" name="desistimiento" value="Aceptado" required>
+          <label for="desistimiento">Pido que la sesión se celebre antes de que terminen los 14 días del <a href="condiciones.html#servicio" target="_blank">derecho de desistimiento</a> y sé que, una vez realizada, ya no podré desistir.</label>
         </div>
 
         <div class="check">
@@ -1166,7 +1182,7 @@
     <div>
       <a href="#" class="brand" style="font-size:18px"><img src="sello.png" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}">Radiografía de tu Cante</a>
       <p class="foot-endorse">Un servicio de <a href="https://www.juecesyfiscales.es" target="_blank" rel="noopener"><img src="logo-jyf.png" alt="" onerror="this.style.display='none'">Jueces y Fiscales</a></p>
-      <p style="margin-top:10px"><a href="tel:+34640863719">640 863 719</a> · <a href="mailto:radiografiadetucante@gmail.com">radiografiadetucante@gmail.com</a></p>
+      <p style="margin-top:10px"><a href="tel:+34640863719">640 863 719</a> · <a href="mailto:info@radiografiadetucante.es">info@radiografiadetucante.es</a></p>
     </div>
     <div class="foot-links">
       <a href="condiciones.html">Condiciones y privacidad</a>
@@ -1296,6 +1312,8 @@
       var first = form.querySelector(':invalid');
       err.textContent = first && first.id === 'privacidad'
         ? 'Para enviar la solicitud, acepta las condiciones y la política de privacidad.'
+        : first && first.id === 'desistimiento'
+        ? 'Para enviar la solicitud, marca la casilla sobre el derecho de desistimiento.'
         : 'Revisa los campos obligatorios: nombre, teléfono, email, momento de la oposición y temas.';
       err.hidden = false;
       if (first) first.focus();
