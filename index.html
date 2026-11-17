@@ -103,6 +103,29 @@
   }
 
   /* ---------- NAVEGACIÓN ---------- */
+  .jyf-bar {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    height: 38px; padding: 0 12px;
+    background: #f7f3ea; border-bottom: 1px solid var(--gold);
+    text-decoration: none;
+  }
+  .jyf-bar.top { position: fixed; top: 0; left: 0; right: 0; z-index: 60; }
+  .jyf-bar.bottom { margin-top: 32px; margin-bottom: -36px; border-bottom: 0; border-top: 1px solid var(--gold); height: 46px; }
+  .jyf-bar .jb-logo { width: 28px; height: 28px; object-fit: contain; }
+  .jyf-bar .jb-pre { font-size: 10px; letter-spacing: 1.6px; text-transform: uppercase; color: #1e2d55; opacity: 0.75; font-weight: 500; }
+  .jyf-bar .jb-word { height: 12px; width: auto; display: block; }
+  .jyf-bar:hover .jb-pre { opacity: 1; }
+  .nav { top: 38px !important; }
+  @media (min-width: 900px) {
+    .jyf-bar { height: 44px; gap: 12px; }
+    .jyf-bar .jb-logo { width: 32px; height: 32px; }
+    .jyf-bar .jb-pre { font-size: 11px; }
+    .jyf-bar .jb-word { height: 14px; }
+    .nav { top: 44px !important; }
+    .progress { top: 44px !important; }
+  }
+  @media (max-width: 380px) { .jyf-bar { gap: 8px; } .jyf-bar .jb-pre { font-size: 9px; letter-spacing: 1.2px; } .jyf-bar .jb-word { height: 10px; } }
+
   .nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -191,7 +214,7 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 104px 0 64px;
+    padding: 130px 0 64px;
     background: radial-gradient(ellipse 70% 55% at 50% 0%, #2b200d 0%, transparent 65%), var(--ink);
     overflow: hidden;
     text-align: center;
@@ -955,7 +978,7 @@
   /* Barra de progreso de lectura */
   .progress {
     position: fixed;
-    top: 0; left: 0;
+    top: 38px; left: 0;
     height: 2px;
     width: 100%;
     background: linear-gradient(90deg, var(--gold), var(--gold-2));
@@ -980,10 +1003,10 @@
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <!-- NAVEGACIÓN -->
+<a class="jyf-bar top" href="https://www.juecesyfiscales.es" target="_blank" rel="noopener"><img class="jb-logo" src="logo-jyf-azul.png" alt=""><span class="jb-pre">Un servicio de</span><img class="jb-word" src="jyf-texto.png" alt="Jueces y Fiscales"></a>
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
     <a href="#" class="brand"><img src="sello.png" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}"><span>Radiografía de tu Cante</span></a>
-    <a class="nav-by" href="https://www.juecesyfiscales.es" target="_blank" rel="noopener"><img class="nb-logo" src="logo-jyf-azul.png" alt=""><span class="nb-text"><span class="nb-pre">Un servicio de</span><img class="nb-word" src="jyf-texto.png" alt="Jueces y Fiscales"></span></a>
   </div>
 </header>
 
@@ -998,10 +1021,10 @@
     <p class="question in d3">¿Sabes realmente cómo suenas ante un tribunal?</p>
     <div class="in d5">
       <p class="contrast-head">Tu preparador te conoce. El tribunal, no.</p>
-      <p class="what"><b>Te proponemos un simulacro de tu examen oral.</b> Cantas tu tema por videollamada ante un juez o fiscal preparador que no te conoce y, al terminar, te dice qué haces bien y qué debes corregir.</p>
+      <p class="what"><b>Te proponemos un simulacro del examen oral.</b> Cantas tu tema por videollamada ante un juez o fiscal preparador que no te conoce y, al terminar, te dice qué haces bien y qué debes corregir.</p>
       <ul class="perks">
         <li class="hl"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M4 7h16M7 7l-3 7a3 3 0 0 0 6 0L7 7zM17 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg><b>Juez o fiscal, lo que elijas</b><span>Y escoges un tema, o varios para que él decida entre ellos.</span></li>
-        <li><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><b>Sin registros</b><span>Solo un formulario con tus preferencias.</span></li>
+        <li><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><b>Sin registros</b><span>Solo rellena el formulario de esta web con tus preferencias.</span></li>
         <li><svg viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6M9 14v4"/><rect x="17" y="8" width="5" height="11" rx="1.2"/></svg><b>30 minutos de videollamada</b><span>Con ordenador o móvil, lo que quieras.</span></li>
         <li><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg><b>Te enviamos el enlace</b><span>Al e-mail que nos digas. Llegado el día, te conectas con un clic.</span></li>
       </ul>
@@ -1252,7 +1275,6 @@
   <div class="wrap foot">
     <div>
       <a href="#" class="brand" style="font-size:18px"><img src="sello.png" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}">Radiografía de tu Cante</a>
-      <p class="foot-endorse"><a class="nav-by" href="https://www.juecesyfiscales.es" target="_blank" rel="noopener"><img class="nb-logo" src="logo-jyf-azul.png" alt=""><span class="nb-text"><span class="nb-pre">Un servicio de</span><img class="nb-word" src="jyf-texto.png" alt="Jueces y Fiscales"></span></a></p>
       <p style="margin-top:10px"><a href="tel:+34640863719">640 863 719</a> · <a href="mailto:info@radiografiadetucante.es">info@radiografiadetucante.es</a></p>
     </div>
     <div class="foot-links">
@@ -1262,6 +1284,7 @@
       <a href="preparadores.html">Preparadores</a>
     </div>
   </div>
+  <a class="jyf-bar bottom" href="https://www.juecesyfiscales.es" target="_blank" rel="noopener"><img class="jb-logo" src="logo-jyf-azul.png" alt=""><span class="jb-pre">Un servicio de</span><img class="jb-word" src="jyf-texto.png" alt="Jueces y Fiscales"></a>
 </footer>
 
 <!-- WHATSAPP -->
