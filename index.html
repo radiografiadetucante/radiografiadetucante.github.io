@@ -13,7 +13,7 @@
 <meta property="og:locale" content="es_ES">
 <meta property="og:url" content="https://radiografiadetucante.es/">
 <meta property="og:title" content="Radiografía de tu Cante">
-<meta property="og:description" content="¿Sabes realmente cómo suenas ante un tribunal? Sesión de 30 minutos con un preparador que no te conoce. Confidencial.">
+<meta property="og:description" content="¿Sabes realmente cómo suenas ante un tribunal? Sesión de 30 minutos por videollamada con un preparador real, juez o fiscal, que no te conoce. Tú eliges materia y tema. Sin registros: nosotros cuadramos agendas y te enviamos el enlace. Confidencial.">
 <meta property="og:image" content="https://radiografiadetucante.es/logo.png">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -122,7 +122,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 68px;
+    height: 76px;
   }
 
   .brand {
@@ -144,23 +144,41 @@
   .nav-by {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 14px;
     text-decoration: none;
-    font-size: 13px;
-    color: var(--stone);
-    transition: color 0.2s ease;
+    padding: 5px 22px 5px 5px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #fdfbf6 0%, #f1ebde 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(196,154,44,0.55),
+      inset 0 0 0 4px #fbf8f1,
+      inset 0 0 0 5px rgba(196,154,44,0.30),
+      0 6px 22px rgba(0,0,0,0.45),
+      0 0 0 1px rgba(196,154,44,0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-
-  .nav-by .nb-text { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.15; }
-  .nav-by .nb-pre { font-size: 11px; color: var(--stone); }
-  .nav-by .nb-name { font-size: 14px; color: var(--parchment); font-weight: 600; }
-  .nav-by img { width: 40px; height: 40px; object-fit: contain; }
-  .nav-by:hover .nb-name { color: var(--gold-2); }
+  .nav-by .nb-logo {
+    width: 48px; height: 48px; object-fit: contain;
+    background: #fff; border-radius: 50%; padding: 2px;
+    box-shadow: 0 0 0 1px rgba(196,154,44,0.6);
+  }
+  .nav-by .nb-text {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 5px; line-height: 1;
+    padding-left: 14px; border-left: 1px solid rgba(196,154,44,0.6);
+  }
+  .nav-by .nb-pre {
+    font-family: var(--serif); font-style: italic; font-size: 13px; letter-spacing: 0.3px;
+    color: #8a6d22;
+  }
+  .nav-by .nb-word { height: 14px; width: auto; display: block; }
+  .nav-by:hover { transform: translateY(-1px); }
 
   @media (max-width: 480px) {
-    .nav-by .nb-pre { font-size: 10px; }
-    .nav-by .nb-name { font-size: 13px; }
-    .nav-by img { width: 34px; height: 34px; }
+    .nav-by { gap: 10px; padding: 4px 16px 4px 4px; }
+    .nav-by .nb-logo { width: 40px; height: 40px; }
+    .nav-by .nb-text { padding-left: 10px; gap: 4px; }
+    .nav-by .nb-pre { font-size: 11.5px; }
+    .nav-by .nb-word { height: 11px; }
   }
 
   @media (max-width: 480px) {
@@ -244,9 +262,43 @@
     font-size: 16px;
     color: #b8ad9d;
   }
+  .contrast b { color: var(--gold); font-weight: 600; }
+  .easy { margin: 10px auto 0; max-width: 560px; font-size: 15px; color: #b8ad9d; }
+  .easy b { color: var(--parchment); font-weight: 600; }
+  .how-sub { max-width: 640px; margin: 16px 0 -20px; font-size: 18px; color: var(--stone); }
+  .how-sub b { color: var(--gold); font-weight: 600; }
+  .what {
+    max-width: 700px; margin: 26px auto 0; padding: 24px 30px 22px;
+    font-size: 17px; line-height: 1.55; color: #e2d9c8;
+    border: 1px solid rgba(196,154,44,0.6);
+    background: linear-gradient(180deg, rgba(196,154,44,0.14), rgba(196,154,44,0.04));
+    border-radius: 6px; position: relative;
+  }
+  .what b {
+    display: block; margin-bottom: 8px;
+    font-family: var(--serif); font-size: 30px; line-height: 1.15; font-weight: 600; color: var(--gold-2);
+  }
+  @media (max-width: 600px) {
+    .what { padding: 18px 18px 16px; font-size: 15.5px; margin-top: 20px; }
+    .what b { font-size: 25px; }
+  }
+  .perks { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 920px; margin: 26px auto 0; text-align: left; }
+  .perks li { display: grid; grid-template-columns: 34px 1fr; grid-template-rows: auto 1fr; column-gap: 12px; align-items: start; align-content: start; padding: 16px 16px 15px; border: 1px solid var(--line-dark); background: rgba(255,255,255,0.025); border-radius: 6px; }
+  .perks svg { grid-row: span 2; width: 30px; height: 30px; fill: none; stroke: var(--gold-2); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .perks b { font-size: 15px; font-weight: 600; color: var(--parchment); line-height: 1.25; }
+  .perks span { font-size: 14px; color: #b8ad9d; line-height: 1.4; margin-top: 4px; display: block; }
+  .perks b { display: block; }
+  .perks li.hl { border-color: rgba(196,154,44,0.7); background: rgba(196,154,44,0.10); }
+  .perks li.hl b { color: var(--gold-2); }
+  @media (max-width: 900px) { .perks { grid-template-columns: 1fr 1fr; gap: 10px; } }
+  @media (max-width: 600px) { .perks li { padding: 12px; grid-template-columns: 26px 1fr; column-gap: 9px; } .perks svg { width: 24px; height: 24px; } .perks b { font-size: 14px; } .perks span { font-size: 12.5px; } }
+  .pick { display: inline-block; margin: 18px auto 0; padding: 12px 22px; border: 1px solid rgba(196,154,44,0.55); background: rgba(196,154,44,0.07); font-size: 16px; line-height: 1.5; color: var(--parchment); }
+  .pick b { color: var(--gold-2); font-weight: 600; }
+  @media (max-width: 600px) { .pick { font-size: 15px; padding: 11px 16px; margin-top: 16px; } }
+  @media (max-width: 600px) { .easy { font-size: 14px; } .how-sub { font-size: 16px; margin: 12px 0 -16px; } }
 
   /* Bloque del Supremo */
-  .supremo-sec { padding: 16px 0 88px; background: var(--ink); }
+  .supremo-sec { padding: 64px 0 80px; background: var(--ink-2); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
 
   .duo {
     display: grid;
@@ -352,7 +404,7 @@
     .rule { margin-top: 18px; width: 32px; }
     .question { font-size: 31px; line-height: 1.2; margin-top: 22px; }
     .contrast-head { font-size: 16px; margin-top: 18px; }
-    .contrast { display: none; }
+    .contrast { display: block; font-size: 15px; line-height: 1.5; margin-top: 10px; }
     .hero-ctas { flex-direction: column; align-items: center; gap: 6px; margin-top: 30px; }
     .hero-ctas .btn-gold { width: 100%; max-width: 300px; padding: 16px 20px; font-size: 11px; letter-spacing: 2px; }
     .hero-ctas .btn-ghost { border: 0; padding: 12px; font-size: 11px; letter-spacing: 2px; color: var(--gold-2); }
@@ -453,7 +505,10 @@
   .video-play .s { font-size: 12px; color: var(--stone); }
 
   /* Por qué */
-  .why { background: var(--ink-2); }
+  .why { background: var(--parchment); color: var(--text-dark); }
+  .why .h2 { color: var(--ink); }
+  .why-item h3 { color: var(--ink); }
+  .why .why-item p { color: #5e5345; }
 
   .why-grid {
     display: grid;
@@ -479,12 +534,12 @@
   }
 
   /* Cómo funciona */
-  .how { background: var(--ink); }
+  .how { background: radial-gradient(ellipse at 50% 0%, rgba(196,154,44,0.10), transparent 60%), var(--ink); }
 
   .steps {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 24px;
     margin-top: 52px;
     position: relative;
@@ -517,6 +572,9 @@
 
   .step h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
   .step p { font-size: 15px; color: var(--stone); }
+  .step.key .n, .js .step.key .n { background: var(--gold); color: var(--ink); box-shadow: 0 0 0 6px rgba(196,154,44,0.16); }
+  .step.key h3 { color: var(--gold-2); }
+  .step.key p b { color: var(--parchment); font-weight: 600; }
 
   @media (max-width: 860px) {
     .steps { grid-template-columns: 1fr; gap: 26px; }
@@ -729,7 +787,7 @@
 
   /* ---------- PREPARADORES ---------- */
   .tutors {
-    background: var(--ink);
+    background: radial-gradient(ellipse at 100% 50%, rgba(196,154,44,0.14), transparent 55%), var(--ink-2);
     padding: 80px 0;
     border-top: 1px solid var(--line-dark);
   }
@@ -765,6 +823,7 @@
   .foot a { color: var(--parchment); text-decoration: none; }
   .foot a:hover { color: var(--gold-2); }
 
+  .foot-endorse { margin-top: 18px; }
   .foot-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 
   .foot-links button {
@@ -924,7 +983,7 @@
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
     <a href="#" class="brand"><img src="sello.png" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}"><span>Radiografía de tu Cante</span></a>
-    <a class="nav-by" href="https://www.juecesyfiscales.es" target="_blank" rel="noopener"><span class="nb-text"><span class="nb-pre">Un servicio de</span><span class="nb-name">Jueces y Fiscales</span></span><img src="logo-jyf.png" alt="" onerror="this.style.display='none'"></a>
+    <a class="nav-by" href="https://www.juecesyfiscales.es" target="_blank" rel="noopener"><img class="nb-logo" src="logo-jyf-azul.png" alt=""><span class="nb-text"><span class="nb-pre">Un servicio de</span><img class="nb-word" src="jyf-texto.png" alt="Jueces y Fiscales"></span></a>
   </div>
 </header>
 
@@ -939,14 +998,20 @@
     <p class="question in d3">¿Sabes realmente cómo suenas ante un tribunal?</p>
     <div class="in d5">
       <p class="contrast-head">Tu preparador te conoce. El tribunal, no.</p>
-      <p class="contrast">Canta ante otro preparador, ajeno a tu día a día, y ponte a prueba.</p>
+      <p class="what"><b>Te proponemos un simulacro de tu examen oral.</b> Cantas tu tema por videollamada ante un juez o fiscal preparador que no te conoce y, al terminar, te dice qué haces bien y qué debes corregir.</p>
+      <ul class="perks">
+        <li class="hl"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M4 7h16M7 7l-3 7a3 3 0 0 0 6 0L7 7zM17 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg><b>Juez o fiscal, lo que elijas</b><span>Y escoges un tema, o varios para que él decida entre ellos.</span></li>
+        <li><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><b>Sin registros</b><span>Solo un formulario con tus preferencias.</span></li>
+        <li><svg viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6M9 14v4"/><rect x="17" y="8" width="5" height="11" rx="1.2"/></svg><b>30 minutos de videollamada</b><span>Con ordenador o móvil, lo que quieras.</span></li>
+        <li><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg><b>Te enviamos el enlace</b><span>Al e-mail que nos digas. Llegado el día, te conectas con un clic.</span></li>
+      </ul>
     </div>
     <div class="in d6">
       <div class="hero-ctas">
-        <a href="#reservar" class="btn btn-gold">Solicitar mi sesión online</a>
+        <a href="#reservar" class="btn btn-gold">Solicitar mi sesión con un preparador</a>
         <a href="#testimonio" class="btn btn-ghost" id="watchBtn"><span class="play"></span>Ver testimonio</a>
       </div>
-      <p class="facts"><span class="f-long">Sesión suelta de 30 minutos por videollamada</span><span class="f-short">30 minutos online</span> · <b>49&nbsp;€</b> <span class="f-launch">(precio de lanzamiento)</span> · Confidencial</p>
+      <p class="facts"><span class="f-long">Sesión suelta de 30 minutos por videollamada</span><span class="f-short">30 minutos por videollamada</span> · <b>49&nbsp;€</b> <span class="f-launch">(precio de lanzamiento)</span> · Confidencial</p>
     </div>
   </div>
 </section>
@@ -992,29 +1057,35 @@
 <section class="how">
   <div class="wrap">
     <h2 class="h2">Así funciona</h2>
+    <p class="how-sub">Tú solo rellenas un formulario con tus preferencias y te conectas. <b>Todo lo demás lo hacemos nosotros.</b></p>
     <ol class="steps">
       <li class="step">
         <span class="n">1</span>
         <h3>Rellenas el formulario</h3>
-        <p>En un minuto.</p>
+        <p>Con tus preferencias. Un minuto, sin crear cuenta.</p>
       </li>
-      <li class="step">
+      <li class="step key">
         <span class="n">2</span>
-        <h3>Te proponemos preparador</h3>
-        <p>Adecuado a tu perfil. Nunca de tu provincia ni tu preparador habitual.</p>
+        <h3>Eliges qué cantar</h3>
+        <p><b>Tú decides materia y tema.</b> O eliges varios, si quieres que sea el preparador quien elija uno de entre esos.</p>
       </li>
       <li class="step">
         <span class="n">3</span>
-        <h3>Eliges horario</h3>
-        <p>Entre los que te proponemos, con al menos 3 días de margen para que prepare tu tema. Le pagas directamente a él, antes de la sesión.</p>
+        <h3>Buscamos tu preparador</h3>
+        <p>Juez o fiscal. Nunca el tuyo habitual y, si quieres, de fuera de tu provincia.</p>
       </li>
       <li class="step">
         <span class="n">4</span>
-        <h3>Te llega la cita</h3>
-        <p>Fecha y enlace de la videollamada por email. Un clic y estás dentro, sin instalar nada.</p>
+        <h3>Cuadramos las agendas</h3>
+        <p>Te proponemos horarios con 3 días de margen. Tú solo eliges y le pagas antes de la sesión.</p>
       </li>
       <li class="step">
         <span class="n">5</span>
+        <h3>Te enviamos el enlace</h3>
+        <p>Por email, con recordatorio. Un clic a la hora acordada, sin instalar nada.</p>
+      </li>
+      <li class="step">
+        <span class="n">6</span>
         <h3>Cantas y recibes tu veredicto</h3>
         <p>Qué haces bien, qué corregir y dónde estás.</p>
       </li>
@@ -1035,7 +1106,7 @@
       <p class="lede">Te contactamos en menos de 24 horas para proponerte preparador. Sin compromiso hasta que confirmes.</p>
       <div class="price">
         <span class="amount">49 €</span>
-        <span class="per">por sesión<br>30 minutos online</span>
+        <span class="per">por sesión<br>30 minutos por videollamada</span>
       </div>
       <p class="launch-note">Precio de lanzamiento hasta el 30 de junio de 2027 (después, 79&nbsp;€).</p>
       <p class="book-contact">
@@ -1122,10 +1193,10 @@
             <input type="radio" id="sex-ind" name="preferencia_preparador" value="Indistinto" checked><label for="sex-ind">Indistinto</label>
           </div>
 
-          <p class="sub-q">¿De otra comunidad autónoma?</p>
+          <p class="sub-q">¿De fuera de tu provincia?</p>
           <div class="chips">
-            <input type="radio" id="ccaa-si" name="otra_comunidad" value="Sí"><label for="ccaa-si">Sí, prefiero</label>
-            <input type="radio" id="ccaa-ind" name="otra_comunidad" value="Indistinto" checked><label for="ccaa-ind">Indistinto</label>
+            <input type="radio" id="prov-si" name="fuera_provincia" value="Sí"><label for="prov-si">Sí, prefiero</label>
+            <input type="radio" id="prov-ind" name="fuera_provincia" value="Indistinto" checked><label for="prov-ind">Indistinto</label>
           </div>
 
           <div class="field" style="margin-top:16px">
@@ -1152,7 +1223,7 @@
           <label for="privacidad">He leído y acepto las <a href="condiciones.html" target="_blank">condiciones del servicio y la política de privacidad</a>. Mis datos se utilizarán exclusivamente para coordinar la sesión solicitada y solo se comunicarán al preparador que se me asigne, con ese único fin.</label>
         </div>
 
-        <button type="submit" class="btn btn-gold submit" id="submitBtn">Solicitar mi sesión online</button>
+        <button type="submit" class="btn btn-gold submit" id="submitBtn">Enviar mi solicitud</button>
         <p class="form-error" id="formError" hidden></p>
         <p class="form-note">Confidencial. Te contactamos en menos de 24 horas.</p>
       </form>
@@ -1181,7 +1252,7 @@
   <div class="wrap foot">
     <div>
       <a href="#" class="brand" style="font-size:18px"><img src="sello.png" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://radiografiadetucante.es/logo.png'}else{this.style.display='none'}">Radiografía de tu Cante</a>
-      <p class="foot-endorse">Un servicio de <a href="https://www.juecesyfiscales.es" target="_blank" rel="noopener"><img src="logo-jyf.png" alt="" onerror="this.style.display='none'">Jueces y Fiscales</a></p>
+      <p class="foot-endorse"><a class="nav-by" href="https://www.juecesyfiscales.es" target="_blank" rel="noopener"><img class="nb-logo" src="logo-jyf-azul.png" alt=""><span class="nb-text"><span class="nb-pre">Un servicio de</span><img class="nb-word" src="jyf-texto.png" alt="Jueces y Fiscales"></span></a></p>
       <p style="margin-top:10px"><a href="tel:+34640863719">640 863 719</a> · <a href="mailto:info@radiografiadetucante.es">info@radiografiadetucante.es</a></p>
     </div>
     <div class="foot-links">
@@ -1308,10 +1379,13 @@
       document.getElementById('materiasAlumna').scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
+    document.getElementById('provincia').required = document.getElementById('prov-si').checked;
     if (!form.checkValidity()) {
       var first = form.querySelector(':invalid');
       err.textContent = first && first.id === 'privacidad'
         ? 'Para enviar la solicitud, acepta las condiciones y la política de privacidad.'
+        : first && first.id === 'provincia'
+        ? 'Si prefieres un preparador de fuera de tu provincia, indícanos cuál es tu provincia.'
         : first && first.id === 'desistimiento'
         ? 'Para enviar la solicitud, marca la casilla sobre el derecho de desistimiento.'
         : 'Revisa los campos obligatorios: nombre, teléfono, email, momento de la oposición y temas.';
